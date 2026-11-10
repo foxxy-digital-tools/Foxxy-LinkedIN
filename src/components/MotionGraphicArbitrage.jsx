@@ -92,11 +92,25 @@ export function MotionGraphicArbitrage() {
             </p>
           </div>
 
-          <div className="space-y-2 pt-3 border-t border-blue-100 text-sm text-gray-700">
-            <div className="flex items-center gap-2"><Check className="w-4 h-4 text-[#0A66C2] flex-shrink-0" /><span>1-Month Sales Nav Advanced <strong className="text-[#0A66C2]">FREE</strong></span></div>
-            <div className="flex items-center gap-2"><Check className="w-4 h-4 text-[#0A66C2] flex-shrink-0" /><span>LinkedIn Foundation Playbook</span></div>
-            <div className="flex items-center gap-2"><Check className="w-4 h-4 text-[#0A66C2] flex-shrink-0" /><span>7-Day Sales Nav Accelerator</span></div>
-            <div className="flex items-center gap-2"><Check className="w-4 h-4 text-[#0A66C2] flex-shrink-0" /><span>Zero-Password Safe Activation</span></div>
+          <div className="space-y-2.5 pt-3 border-t border-blue-100 text-sm text-gray-700">
+            {/* Highlighted VIP Attraction */}
+            <div className="p-2.5 -mx-1 rounded-xl bg-gradient-to-r from-blue-50 via-sky-50 to-blue-50/60 border border-blue-200 flex items-center justify-between gap-2 shadow-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-[#0A66C2] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+                  <Check className="w-3.5 h-3.5 stroke-[3]" />
+                </div>
+                <span className="font-bold text-gray-900 text-xs sm:text-sm">
+                  1-Month Sales Nav Advanced <span className="text-[#0A66C2] font-black">FREE</span>
+                </span>
+              </div>
+              <span className="flex-shrink-0 text-[10px] font-mono font-black text-[#0A66C2] bg-blue-100 px-2 py-0.5 rounded-full border border-blue-200">
+                WORTH ₹15,000
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 pt-0.5"><Check className="w-4 h-4 text-emerald-600 flex-shrink-0" /><span>LinkedIn Foundation Playbook</span></div>
+            <div className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-600 flex-shrink-0" /><span>7-Day Sales Nav Accelerator</span></div>
+            <div className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-600 flex-shrink-0" /><span>Zero-Password Safe Activation</span></div>
           </div>
         </div>
       </div>
