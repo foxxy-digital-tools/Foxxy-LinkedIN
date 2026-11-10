@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Growth Toolkit × 1 Month Free Sales Navigator Advanced — Foxxy Digital Tools & CR Academy</title>
+  <meta name="description" content="Get Coach Ravikant's complete LinkedIn Growth Toolkit for ₹3,999. Includes 1 Month LinkedIn Sales Navigator Advanced (Worth ₹15,000) 100% FREE." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- React 18 & ReactDOM CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+  <!-- Razorpay Checkout Script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FFFFFF;
+      color: #1E293B;
+      overflow-x: hidden;
+    }
+    .card-elevated {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    }
+    .bg-dot-pattern {
+      background-size: 24px 24px;
+      background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="selection:bg-[#0A66C2] selection:text-white">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const APP_CONFIG = {
+      RAZORPAY_KEY_ID: "rzp_live_YOUR_KEY_HERE",
+      AMOUNT_IN_PAISE: 399900,
+      PRICE_FORMATTED: "₹3,999",
+      ORIGINAL_PRICE_FORMATTED: "₹15,000",
+      CURRENCY: "INR",
+      PLAYBOOK_1_PDF_URL: "./public/CLIC_LinkedIn_Foundation_Playbook_Digital_Release_2026.pdf",
+      PLAYBOOK_2_PDF_URL: "./public/CLIC_Sales_Navigator_Accelerator_7_Day_Quick_Start.pdf",
+      FOXXY_LOGO_URL: "./public/Foxxy_Video_AI.png",
+      CR_ACADEMY_LOGO_URL: "./public/cr_academy_logo.jpg",
+      COACH_RAVIKANT_HEADSHOT_URL: "./public/coach_ravikant_headshot.jpg",
+      WHATSAPP_SUPPORT_NUMBER: "919918991805",
+      WHATSAPP_SUPPORT_FORMATTED: "+91 9918991805",
+      TOTAL_SEATS: 100,
+      CLAIMED_SEATS_INITIAL: 89,
+    };
+
+    function FoxxyLogo({ className = "h-8 sm:h-9" }) {
+      const [imgError, setImgError] = useState(false);
+      if (!imgError && APP_CONFIG.FOXXY_LOGO_URL) {
+        return (
+          <img
+            src={APP_CONFIG.FOXXY_LOGO_URL}
+            alt="Foxxy Digital Tools"
+            className={`${className} w-auto object-contain rounded-md`}
+            onError={() => setImgError(true)}
+          />
+        );
+      }
+      return (
+        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-[#241B68] text-white shadow-sm ${className}`}>
+          <span className="font-extrabold tracking-wider text-xs">FOXXY DIGITAL TOOLS</span>
+        </div>
+      );
+    }
+
+    function CRAcademyBadge({ className = "h-7 sm:h-8" }) {
+      return (
+        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#D4FF00] text-black border border-lime-300 font-sans shadow-sm ${className}`}>
+          <div className="w-4 h-4 rounded-full bg-black flex items-center justify-center text-[#D4FF00] text-[10px] font-black">CR</div>
+          <span className="text-xs font-black tracking-tight text-black">CR ACADEMY</span>
+        </div>
+      );
+    }
+
+    function StandaloneApp() {
+      const [claimedSeats, setClaimedSeats] = useState(APP_CONFIG.CLAIMED_SEATS_INITIAL);
+      const [orderConfirmation, setOrderConfirmation] = useState(null);
+      const [isModalOpen, setIsModalOpen] = useState(false);
+      const [formData, setFormData] = useState({ fullName: '', phone: '', email: '', profileUrl: '' });
+      const [errors, setErrors] = useState({});
+
+      const remainingSeats = Math.max(1, APP_CONFIG.TOTAL_SEATS - claimedSeats);
+
+      const validate = () => {
+        const errs = {};
+        if (!formData.fullName.trim()) errs.fullName = "Please enter full name";
+        const cleanPhone = formData.phone.replace(/\D/g, '');
+        if (!cleanPhone || !/^[6-9]\d{9}$/.test(cleanPhone)) errs.phone = "Enter valid 10-digit mobile";
+        if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) errs.email = "Enter valid email";
+        if (!formData.profileUrl.trim().toLowerCase().includes('linkedin.com/in/')) errs.profileUrl = "Enter valid LinkedIn URL";
+        setErrors(errs);
+        return Object.keys(errs).length === 0;
+      };
+
+      const handlePayment = (e) => {
+        e.preventDefault();
+        if (!validate()) return;
+        setIsModalOpen(false);
+        const demoId = `pay_demo_${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
+        setOrderConfirmation({
+          paymentId: demoId,
+          customer: { ...formData },
+          amount: APP_CONFIG.PRICE_FORMATTED,
+          timestamp: new Date().toISOString()
+        });
+        setClaimedSeats(prev => Math.min(100, prev + 1));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (window.confetti) {
+          window.confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+        }
+      };
+
+      if (orderConfirmation) {
+        const rawMsg = `Hi Foxxy Digital Tools Team! I just purchased the LinkedIn Growth Toolkit (₹3,999). Payment ID: ${orderConfirmation.paymentId}. My LinkedIn Email is: ${orderConfirmation.customer.email} and my LinkedIn Profile Link is: ${orderConfirmation.customer.profileUrl}. Please assist with my 1-Month Sales Navigator Advanced Free Bonus activation!`;
+        const waLink = `https://wa.me/${APP_CONFIG.WHATSAPP_SUPPORT_NUMBER}?text=${encodeURIComponent(rawMsg)}`;
+
+        return (
+          <div className="min-h-screen bg-gray-50 text-gray-900 py-12 px-4 max-w-4xl mx-auto space-y-8">
+            <div className="flex items-center justify-between pb-6 border-b border-gray-200">
+              <div className="flex items-center gap-3">
+                <FoxxyLogo className="h-8" />
+                <span className="text-gray-300">×</span>
+                <CRAcademyBadge className="h-7" />
+              </div>
+              <button onClick={() => setOrderConfirmation(null)} className="text-xs text-gray-500 hover:text-gray-900">
+                ← Return to Page
+              </button>
+            </div>
+
+            <div className="card-elevated rounded-3xl p-8 text-center space-y-4">
+              <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 mx-auto flex items-center justify-center font-black text-2xl">✓</div>
+              <span className="text-xs font-mono font-bold text-green-700 uppercase">PAYMENT CONFIRMED (₹3,999)</span>
+              <h1 className="text-3xl font-extrabold text-gray-900">Welcome, {orderConfirmation.customer.fullName}!</h1>
+              <p className="text-sm text-gray-500 max-w-xl mx-auto">
+                Payment Reference ID: <code className="text-[#0A66C2] font-mono">{orderConfirmation.paymentId}</code>. Your download links are unlocked below and your free Sales Navigator Advanced seat is queued.
+              </p>
+            </div>
+
+            <div className="card-elevated rounded-2xl p-6 space-y-4">
+              <h2 className="text-xl font-bold text-gray-900">1. Instant Playbook Downloads</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href={APP_CONFIG.PLAYBOOK_1_PDF_URL} download className="p-4 rounded-xl bg-blue-50 border border-blue-200 block hover:border-[#0A66C2]">
+                  <span className="text-xs font-mono text-[#0A66C2] block font-bold">DIGITAL PLAYBOOK</span>
+                  <span className="text-sm font-bold text-gray-900 block mt-1">📘 The LinkedIn Foundation Playbook</span>
+                  <span className="text-xs text-[#0A66C2] font-bold block mt-2">Download PDF →</span>
+                </a>
+                <a href={APP_CONFIG.PLAYBOOK_2_PDF_URL} download className="p-4 rounded-xl bg-green-50 border border-green-200 block hover:border-green-500">
+                  <span className="text-xs font-mono text-green-700 block font-bold">WORKBOOK</span>
+                  <span className="text-sm font-bold text-gray-900 block mt-1">📗 Sales Navigator Accelerator</span>
+                  <span className="text-xs text-green-700 font-bold block mt-2">Download Workbook →</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="card-elevated rounded-2xl p-6 space-y-4 bg-gradient-to-r from-blue-50 to-green-50">
+              <span className="text-xs font-mono text-green-700 font-bold uppercase">2. PRIORITY SEAT DISPATCH</span>
+              <h2 className="text-xl font-bold text-gray-900">1-Click WhatsApp Seat Activation</h2>
+              <p className="text-sm text-gray-600">
+                Click to send your verified order details to our support desk on WhatsApp (+91 9918991805) to receive your official seat invitation.
+              </p>
+              <a href={waLink} target="_blank" className="inline-block py-3 px-6 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-sm shadow-md">
+                Activate Seat on WhatsApp →
+              </a>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="min-h-screen bg-white text-gray-900">
+          {/* Top Urgency Ticker (Fixed: No "cohort") */}
+          <div className="sticky top-0 z-50 bg-[#0A66C2] px-3 py-2 text-xs text-center text-white font-medium">
+            ⚡ <strong>SPECIAL OFFER:</strong> 1 Month LinkedIn Sales Navigator Advanced (Worth ₹15,000) FREE with Toolkit — 
+            <span className="font-bold underline decoration-yellow-300 ml-1"> Only {remainingSeats} of {APP_CONFIG.TOTAL_SEATS} Seats Left!</span>
+          </div>
+
+          {/* Navigation Bar (Fixed: Visible side-by-side logos, zero gap) */}
+          <nav className="bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 py-3 sticky top-8 z-40">
+            <div className="max-w-7xl mx-auto flex items-center justify-between">
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <FoxxyLogo className="h-8" />
+                <span className="text-gray-300 font-light text-lg">×</span>
+                <CRAcademyBadge className="h-7" />
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="hidden sm:inline-block text-xs font-mono text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full font-semibold">
+                  {remainingSeats} Seats Left
+                </span>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-4 py-1.5 rounded-xl bg-[#0A66C2] text-white font-bold text-xs hover:bg-[#084e96] transition-all"
+                >
+                  Claim Seat ₹3,999 →
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* Hero Section */}
+          <section className="pt-10 pb-16 px-4 max-w-7xl mx-auto bg-dot-pattern">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="lg:col-span-6 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs text-gray-700">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span className="font-semibold text-gray-900">10,000+ Professionals Trained</span>
+                </div>
+                <h1 className="text-3xl sm:text-5xl font-black text-gray-900 leading-tight">
+                  Turn LinkedIn Into A High-Value Client Engine. <br />
+                  <span className="text-[#0A66C2]">Get 1 Month Sales Nav Advanced FREE.</span>
+                </h1>
+                <p className="text-base text-gray-600 leading-relaxed">
+                  Get Coach Ravikant's complete <strong>LinkedIn Growth Foundation Playbook</strong> + <strong>7-Day Sales Nav Accelerator</strong> for a one-time <strong>₹3,999</strong> — and receive <strong>1 Month of Sales Navigator Advanced (Worth ₹15,000 / $159.99)</strong> 100% FREE. Zero password needed.
+                </p>
+
+                {/* Redesigned Clean Arbitrage Card */}
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-50/70 via-white to-gray-50 border border-blue-200 space-y-3">
+                  <div className="flex items-center justify-between pb-3 border-b border-gray-200">
+                    <div>
+                      <span className="text-[10px] font-mono text-gray-400 uppercase block font-semibold">RETAIL SOFTWARE COST</span>
+                      <span className="text-xl font-bold text-gray-400 line-through decoration-red-500 decoration-2 font-mono">₹15,000</span>
+                      <span className="text-xs text-red-500 font-mono ml-1">($159.99/mo)</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] font-mono text-[#0A66C2] uppercase font-bold block">YOUR PRICE TODAY</span>
+                      <span className="text-2xl sm:text-3xl font-black text-[#0A66C2] font-mono">₹3,999</span>
+                    </div>
+                  </div>
+                  <div className="text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full text-center">
+                    🎉 You Save ₹11,001 Instantly (73% Arbitrage)
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-base shadow-md transition-all cursor-pointer"
+                >
+                  Claim Toolkit + Free Sales Nav Seat (₹3,999) →
+                </button>
+              </div>
+
+              {/* Right Hero Card: Titanium VIP Pass */}
+              <div className="lg:col-span-6 card-elevated rounded-3xl p-6 space-y-4">
+                <div className="rounded-2xl bg-gradient-to-br from-[#0A66C2] via-[#08529C] to-[#043366] text-white p-6 shadow-md">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-11 h-11 rounded-xl bg-white text-[#0A66C2] flex items-center justify-center font-black text-xl">in</div>
+                    <span className="text-xs font-mono text-black bg-[#D4FF00] font-black px-2.5 py-0.5 rounded-full uppercase">
+                      FREE BONUS SEAT
+                    </span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">LinkedIn Sales Navigator Advanced</h3>
+                  <p className="text-xs text-sky-100 mt-1">Official 1-Month Sponsored Seat ($159.99 Value) — Zero Password Required</p>
+                  <div className="mt-4 pt-3 border-t border-white/20 grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                      <span className="text-sky-200 block text-[10px]">Official Value:</span>
+                      <span className="text-white/80 line-through font-mono">₹15,000 ($159.99)</span>
+                    </div>
+                    <div>
+                      <span className="text-sky-200 block text-[10px]">Your Price:</span>
+                      <span className="text-[#D4FF00] font-bold font-mono text-sm">₹0 (Free Bonus)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                    <span className="text-[#0A66C2] font-bold block">01. Master Playbook</span>
+                    <span className="text-gray-600 text-[11px]">By Coach Ravikant</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                    <span className="text-[#0A66C2] font-bold block">02. 7-Day Sprint</span>
+                    <span className="text-gray-600 text-[11px]">Implementation Workbook</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Checkout Modal (Clean, Light, Dismissible) */}
+          {isModalOpen && (
+            <div
+              onClick={(e) => { if (e.target === e.currentTarget) setIsModalOpen(false); }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm"
+            >
+              <div className="w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-200 relative">
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">Claim Your Free Seat (₹3,999)</h3>
+                    <p className="text-xs text-gray-500">Includes 1-Month Sales Nav Advanced + Both Playbooks</p>
+                  </div>
+                  <button
+                    onClick={() => setIsModalOpen(false)}
+                    className="p-1.5 rounded-full bg-gray-100 text-gray-500 hover:text-gray-900"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <form onSubmit={handlePayment} className="space-y-3.5">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      placeholder="e.g. Vikramaditya Sharma"
+                      className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-300 text-sm"
+                    />
+                    {errors.fullName && <p className="text-xs text-red-500">{errors.fullName}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">WhatsApp Mobile *</label>
+                    <input
+                      type="tel"
+                      required
+                      maxLength={10}
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="9876543210"
+                      className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-300 text-sm"
+                    />
+                    {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">LinkedIn Registered Email *</label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="name@example.com"
+                      className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-300 text-sm"
+                    />
+                    {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">LinkedIn Profile URL *</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.profileUrl}
+                      onChange={(e) => setFormData({ ...formData, profileUrl: e.target.value })}
+                      placeholder="https://www.linkedin.com/in/yourprofile"
+                      className="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-300 text-sm"
+                    />
+                    {errors.profileUrl && <p className="text-xs text-red-500">{errors.profileUrl}</p>}
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-green-50 border border-green-200 text-xs text-green-800">
+                    🔒 Zero-Password Guarantee: We never ask for your LinkedIn login.
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-sm shadow-md"
+                  >
+                    Proceed to Pay ₹3,999 →
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* Footer */}
+          <footer className="border-t border-gray-200 py-10 px-4 text-center text-xs text-gray-400 space-y-3">
+            <p>WhatsApp Support: +91 9918991805 | Implementation Enquiries: +91 8595109750</p>
+            <p className="max-w-2xl mx-auto text-[10px]">
+              © 2026 Coach Ravikant Rathor / Foxxy Digital Tools / CR Academy. All rights reserved.
+            </p>
+          </footer>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<StandaloneApp />, document.getElementById('root'));
+  </script>
+</body>
+</html>
