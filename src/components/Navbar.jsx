@@ -24,17 +24,17 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="flex h-2 w-2 relative flex-shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
             </span>
-            <span className="font-semibold text-yellow-300 flex items-center gap-1">
-              <Zap className="w-3.5 h-3.5 fill-current" />
+            <span className="font-semibold text-red-300 flex items-center gap-1">
+              <Zap className="w-3.5 h-3.5 fill-current text-red-400" />
               SPECIAL OFFER:
             </span>
             <span className="hidden sm:inline">
               1 Month LinkedIn Sales Navigator Advanced (Worth ₹15,000) FREE with the Toolkit —
             </span>
-            <span className="font-bold underline decoration-yellow-300 underline-offset-2">
+            <span className="font-bold underline decoration-red-400 underline-offset-2">
               Only {remainingSeats} of {APP_CONFIG.TOTAL_SEATS} Sponsored Seats Left!
             </span>
           </div>
@@ -42,7 +42,7 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
           <a
             href="#checkout"
             onClick={scrollToCheckout}
-            className="flex-shrink-0 text-[11px] sm:text-xs font-bold text-[#0A66C2] bg-yellow-300 hover:bg-yellow-200 px-3 py-1 rounded-full transition-all flex items-center gap-1 shadow-sm"
+            className="flex-shrink-0 text-[11px] sm:text-xs font-bold text-white bg-red-600 hover:bg-red-500 px-3.5 py-1 rounded-full transition-all flex items-center gap-1 shadow-sm"
           >
             Claim Free Seat <ArrowRight className="w-3 h-3" />
           </a>
@@ -66,7 +66,7 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
           {/* Center: Navigation Links */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-semibold text-gray-600">
             <a href="#the-math" className="hover:text-[#0A66C2] transition-colors">
-              The Math (Save ₹11,001)
+              The Math
             </a>
             <a href="#whats-inside" className="hover:text-[#0A66C2] transition-colors">
               What's Inside
@@ -92,7 +92,7 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
               className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 shadow-sm hover:shadow"
             >
               <span>Claim Seat</span>
-              <span className="font-mono text-yellow-300">₹3,999</span>
+              <span className="font-mono text-red-300">₹3,999</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
 
@@ -111,7 +111,7 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
         {mobileMenuOpen && (
           <div className="md:hidden mt-3 pt-3 border-t border-gray-200 flex flex-col gap-2 text-sm font-medium text-gray-700 px-2 animate-fadeIn">
             <a href="#the-math" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[#0A66C2]">
-              The Math (Save ₹11,001)
+              The Math
             </a>
             <a href="#whats-inside" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[#0A66C2]">
               What's Inside
