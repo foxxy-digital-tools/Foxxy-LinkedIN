@@ -92,7 +92,7 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
               className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 shadow-sm hover:shadow"
             >
               <span>Claim Seat</span>
-              <span className="font-mono text-red-300">₹3,999</span>
+              <span className="font-mono text-yellow-300">₹3,999</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
 
