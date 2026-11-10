@@ -71,7 +71,7 @@ export function App() {
         <section className="relative pt-8 pb-16 sm:pt-14 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dot-pattern">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Column: Direct-Response Copy & Visual Arbitrage */}
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-5">
               {/* Trust Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs text-gray-700 shadow-sm">
                 <span className="flex h-2 w-2 relative">
@@ -83,25 +83,27 @@ export function App() {
                 <span className="text-gray-600 font-medium">10,000+ B2B Founders, SDRs & Consultants</span>
               </div>
 
-              {/* H1 Headline — Commanding, visually structured, high-converting */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-[1.12]">
-                Turn LinkedIn Into A High-Value Client Engine. <br className="hidden sm:inline" />
-                <span className="text-[#0A66C2]">Get 1 Month Sales Nav Advanced FREE.</span>
+              {/* H1 Headline — Clean, authoritative, full product name */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-[1.14]">
+                Turn LinkedIn Into A High-Value Client Engine.
+                <span className="block text-[#0A66C2] mt-1 sm:mt-1.5">
+                  Get 1 Month Sales Navigator Advanced FREE.
+                </span>
               </h1>
 
-              {/* Subheadline */}
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
-                Get Coach Ravikant’s complete <strong>LinkedIn Growth Foundation Playbook</strong> + <strong>7-Day Sales Navigator Accelerator</strong> for a one-time <strong>₹3,999</strong> — and receive <strong>1 Full Month of LinkedIn Sales Navigator Advanced (Worth ₹15,000 / $159.99)</strong> sponsored 100% FREE. Zero password required.
+              {/* Subheadline — Concise, punchy, zero fluff */}
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg">
+                Get Coach Ravikant’s complete Growth Toolkit for <strong>₹3,999</strong> — and receive <strong>1 Month of LinkedIn Sales Navigator Advanced (Worth ₹15,000)</strong> 100% FREE. No password required.
               </p>
 
-              {/* Redesigned Balanced Arbitrage Value Card */}
-              <div className="rounded-2xl bg-gradient-to-br from-blue-50/60 via-white to-sky-50/40 border border-blue-200/80 p-5 sm:p-6 shadow-sm space-y-3.5">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3.5 border-b border-gray-200">
+              {/* Balanced Compact Arbitrage Value Card */}
+              <div className="rounded-2xl bg-gradient-to-br from-blue-50/60 via-white to-sky-50/40 border border-blue-200/80 p-4 sm:p-5 shadow-sm space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-gray-200/80">
                   <div>
-                    <span className="text-[11px] font-mono text-gray-400 uppercase font-bold tracking-wider block">
-                      OFFICIAL SOFTWARE RETAIL COST
+                    <span className="text-[10px] font-mono text-gray-400 uppercase font-bold tracking-wider block">
+                      OFFICIAL RETAIL COST
                     </span>
-                    <div className="flex items-baseline gap-2 mt-0.5">
+                    <div className="flex items-baseline gap-1.5 mt-0.5">
                       <span className="text-xl sm:text-2xl font-bold text-gray-400 line-through decoration-red-500 decoration-2 font-mono">
                         ₹15,000
                       </span>
@@ -109,15 +111,15 @@ export function App() {
                     </div>
                   </div>
 
-                  <div className="sm:text-right">
-                    <span className="text-[11px] font-mono text-[#0A66C2] uppercase font-bold tracking-wider block">
-                      YOUR COMPLETE BUNDLE TODAY
+                  <div className="text-right">
+                    <span className="text-[10px] font-mono text-[#0A66C2] uppercase font-bold tracking-wider block">
+                      YOUR COMPLETE BUNDLE
                     </span>
-                    <div className="flex items-baseline gap-1.5 sm:justify-end mt-0.5">
+                    <div className="flex items-baseline gap-1.5 justify-end mt-0.5">
                       <span className="text-2xl sm:text-3xl font-black text-[#0A66C2] font-mono">
                         ₹3,999
                       </span>
-                      <span className="text-xs font-semibold text-gray-500">(One-Time Total)</span>
+                      <span className="text-xs font-semibold text-gray-500">(One-Time)</span>
                     </div>
                   </div>
                 </div>
@@ -127,7 +129,7 @@ export function App() {
                     🎉 You Save ₹11,001 Instantly (73% Arbitrage)
                   </span>
                   <span className="text-gray-500 font-medium text-[11px]">
-                    All Taxes Included • Zero Hidden Fees
+                    Zero Auto-Debit • All Taxes Included
                   </span>
                 </div>
               </div>
@@ -136,9 +138,9 @@ export function App() {
               <div className="space-y-3 pt-1">
                 <button
                   onClick={() => setIsCheckoutModalOpen(true)}
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-base sm:text-lg tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-base sm:text-lg tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
                 >
-                  <span>Claim Toolkit + Free Sales Nav Seat (₹3,999)</span>
+                  <span>Claim Toolkit + Free 1-Month Seat (₹3,999)</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
 
