@@ -136,27 +136,27 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
   };
 
   return (
-    <div id="checkout" className={`${isModal ? '' : 'py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto'}`}>
+    <div id="checkout" className={`${isModal ? '' : 'py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-5xl mx-auto'}`}>
       {!isModal && (
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>SECURE ORDER FORM</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
             Claim Your Bundle + <span className="text-[#0A66C2]">Free Sales Nav Seat</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-gray-500">
+          <p className="mt-2.5 text-xs sm:text-base text-gray-500">
             One-time payment of ₹3,999. No recurring charges. Instant digital download + team-assisted seat activation.
           </p>
         </div>
       )}
 
       {/* Main Checkout Container */}
-      <div className="card-elevated rounded-3xl p-6 sm:p-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
+      <div className="card-elevated rounded-2xl sm:rounded-3xl p-4 sm:p-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">
           {/* Left Column: Form Inputs (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6">
             {/* DEDICATED MOBILE ORDER SUMMARY (lg:hidden): Shows upfront before inputs */}
             <div className="lg:hidden rounded-2xl bg-blue-50/70 border border-blue-200 p-4 space-y-3">
               <div className="flex items-center justify-between">

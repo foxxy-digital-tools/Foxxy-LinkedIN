@@ -109,7 +109,7 @@ export function B2BMathSection({ onOpenCheckout }) {
   ];
 
   return (
-    <section id="the-math" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="the-math" className="py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
@@ -198,145 +198,205 @@ export function B2BMathSection({ onOpenCheckout }) {
           </button>
         </div>
 
-        {/* 1. DEDICATED MOBILE VIEW (md:hidden): Tailored Touch Cards */}
-        <div className="md:hidden p-4 space-y-3.5 bg-gray-50/40">
-          {/* Quick Legend / Header Pill */}
-          <div className="grid grid-cols-2 gap-2 text-[10px] font-mono font-bold text-center pb-1">
-            <div className="p-2 rounded-lg bg-red-100/60 text-red-700 border border-red-200">
-              ❌ OPTION A: DIRECT NAV (₹15,000/mo)
+        {/* 1. DEDICATED MOBILE VIEW (md:hidden): High-Impact Comparative Matrix */}
+        <div className="md:hidden p-3.5 sm:p-4 space-y-4 bg-gray-50/50">
+          {/* Main Attraction VIP Banner */}
+          <div className="p-4 rounded-2xl bg-gradient-to-br from-[#001D40] via-[#0A66C2] to-[#0D47A1] text-white shadow-lg space-y-3 relative overflow-hidden">
+            <div className="flex items-center justify-between gap-2">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#D4FF00] text-black text-[10px] font-black uppercase tracking-wider font-mono shadow-xs">
+                ⭐ MAIN ATTRACTION
+              </span>
+              <span className="text-[10px] font-mono font-bold text-sky-200 bg-white/10 px-2 py-0.5 rounded-full">
+                WORTH ₹15,000 FREE
+              </span>
             </div>
-            <div className="p-2 rounded-lg bg-blue-100 text-[#0A66C2] border border-blue-200">
-              ✅ OPTION B: CR ACADEMY (₹3,999)
+
+            <div>
+              <h4 className="text-base font-black text-white leading-snug">
+                LinkedIn Sales Navigator Advanced Seat
+              </h4>
+              <p className="text-xs text-sky-200/90 mt-0.5">
+                Official 1-Month seat sponsored 100% free by Foxxy Digital Tools. Zero password needed.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/20 text-xs">
+              <div className="p-2 rounded-xl bg-white/10">
+                <span className="text-[9px] uppercase font-mono text-sky-200 block">Direct LinkedIn:</span>
+                <span className="font-bold text-white/60 line-through decoration-red-400 font-mono text-xs sm:text-sm block">
+                  ₹15,000 / mo
+                </span>
+                <span className="text-[9px] text-white/50 block">Recurring card charge</span>
+              </div>
+              <div className="p-2 rounded-xl bg-white/20 border border-white/30">
+                <span className="text-[9px] uppercase font-mono text-[#D4FF00] block">With Toolkit:</span>
+                <span className="font-black text-[#D4FF00] font-mono text-xs sm:text-sm block">
+                  100% FREE (₹0)
+                </span>
+                <span className="text-[9px] text-emerald-300 block">Included in ₹3,999 bundle</span>
+              </div>
             </div>
           </div>
 
-          {comparisonRows.map((row, idx) => {
-            if (row.isMainBonus) {
-              return (
-                <div
-                  key={idx}
-                  className="p-4 rounded-2xl bg-gradient-to-b from-blue-50 via-sky-50/40 to-blue-50/80 border-2 border-[#0A66C2] shadow-md space-y-3 relative overflow-hidden"
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#0A66C2] text-white text-[10px] font-black uppercase tracking-wider shadow-xs">
-                      ⭐ MAIN ATTRACTION • WORTH ₹15,000
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full">
-                      100% FREE
-                    </span>
-                  </div>
+          {/* Side-by-Side Mobile Comparison Card */}
+          <div className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
+            {/* Header Columns */}
+            <div className="grid grid-cols-2 text-center text-xs font-bold border-b border-gray-200">
+              <div className="py-2.5 px-2 bg-red-50/60 text-red-700 border-r border-gray-200">
+                <span className="text-[10px] font-mono block uppercase text-red-500 font-bold">OPTION A</span>
+                <span className="text-xs block">Direct Sales Nav Alone</span>
+                <span className="text-[11px] font-mono block text-red-600 font-bold mt-0.5">₹15,000 / month</span>
+              </div>
+              <div className="py-2.5 px-2 bg-blue-50 text-[#0A66C2]">
+                <span className="text-[10px] font-mono block uppercase text-[#0A66C2] font-bold">OPTION B</span>
+                <span className="text-xs block">CR Academy Bundle</span>
+                <span className="text-[11px] font-mono block text-emerald-700 font-bold mt-0.5">₹3,999 One-Time</span>
+              </div>
+            </div>
 
+            {/* Feature Rows */}
+            <div className="divide-y divide-gray-100 text-xs">
+              {/* Row 1: Software */}
+              <div className="p-3 grid grid-cols-2 gap-2.5 items-center">
+                <div className="text-gray-500 flex items-start gap-1.5">
+                  <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-base font-black text-gray-900 leading-snug">
-                      {row.feature}
-                    </h4>
-                    <p className="text-xs text-gray-600 mt-0.5">
-                      {row.featureSub}
-                    </p>
-                  </div>
-
-                  <div className="space-y-2 pt-1 text-xs">
-                    <div className="p-2.5 rounded-xl bg-white border border-red-200 flex items-start gap-2">
-                      <X className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="text-[10px] font-mono uppercase text-gray-400 font-bold block">
-                          Direct LinkedIn Billing:
-                        </span>
-                        <span className="text-red-600 font-mono font-bold line-through text-sm">
-                          ₹15,000 / month
-                        </span>
-                        <span className="text-[10px] text-gray-400 block">
-                          ($159.99 auto-billed every 30 days)
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-[#0A66C2] to-[#084e96] text-white shadow-sm flex items-start gap-2">
-                      <Check className="w-4 h-4 text-emerald-300 stroke-[3] flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="text-sky-200 text-[10px] font-mono uppercase font-bold block">
-                          Foxxy × CR Academy Bundle:
-                        </span>
-                        <span className="font-black text-white text-sm block">
-                          1 Month INCLUDED 100% FREE
-                        </span>
-                        <span className="text-sky-100 text-[10px] block mt-0.5">
-                          ✓ Official sponsored seat • Zero password needed
-                        </span>
-                      </div>
-                    </div>
+                    <span className="font-semibold text-gray-700 block text-[11px]">Software Only</span>
+                    <span className="text-[10px] text-gray-400">Blank tool, zero guidance</span>
                   </div>
                 </div>
-              );
-            }
-
-            if (row.isTotalRow) {
-              return (
-                <div
-                  key={idx}
-                  className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 via-white to-emerald-50 border-2 border-emerald-300 shadow-md space-y-2.5"
-                >
-                  <span className="inline-block text-[10px] font-mono font-bold uppercase text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300">
-                    TOTAL INVESTMENT REALITY
-                  </span>
+                <div className="text-gray-900 flex items-start gap-1.5 pl-2 border-l border-gray-100">
+                  <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-base font-black text-gray-900">
-                      {row.feature}
-                    </h4>
-                    <p className="text-[11px] text-gray-500">{row.featureSub}</p>
-                  </div>
-
-                  <div className="space-y-2 pt-1 text-xs">
-                    <div className="p-2.5 rounded-xl bg-red-50/70 border border-red-200 flex items-center justify-between">
-                      <span className="text-gray-600 font-medium">Direct LinkedIn:</span>
-                      <span className="text-red-600 font-mono font-bold">₹15,000/mo (Recurring)</span>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-300 flex items-center justify-between">
-                      <div>
-                        <span className="text-emerald-900 font-bold block">CR Academy Bundle:</span>
-                        <span className="text-[10px] text-emerald-700 font-medium">Save ₹11,001 (73% Arbitrage)</span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-lg font-black text-[#0A66C2] font-mono block">₹3,999</span>
-                        <span className="text-[9px] text-gray-500 uppercase font-mono">One-Time Total</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-
-            return (
-              <div
-                key={idx}
-                className="p-3.5 rounded-xl bg-white border border-gray-200 shadow-xs space-y-2"
-              >
-                <div>
-                  <h5 className="text-xs font-bold text-gray-900">{row.feature}</h5>
-                  <p className="text-[11px] text-gray-500 leading-tight">{row.featureSub}</p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 pt-1.5 border-t border-gray-100 text-[11px]">
-                  <div className="p-2 rounded-lg bg-red-50/40 border border-red-100">
-                    <div className="flex items-center gap-1 text-red-500 font-bold mb-0.5 text-[10px] font-mono uppercase">
-                      <X className="w-3 h-3 flex-shrink-0" />
-                      <span>Direct</span>
-                    </div>
-                    <span className="text-gray-600 font-medium block leading-tight">{row.optionA}</span>
-                  </div>
-
-                  <div className="p-2 rounded-lg bg-blue-50/60 border border-blue-100">
-                    <div className="flex items-center gap-1 text-[#0A66C2] font-bold mb-0.5 text-[10px] font-mono uppercase">
-                      <Check className="w-3 h-3 flex-shrink-0" />
-                      <span>Toolkit</span>
-                    </div>
-                    <span className="text-gray-900 font-bold block leading-tight">{row.optionB}</span>
+                    <span className="font-bold text-[#0A66C2] block text-[11px]">1-Mo Seat FREE</span>
+                    <span className="text-[10px] text-emerald-700 font-semibold">Worth ₹15,000 included</span>
                   </div>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Row 2: Playbook */}
+              <div className="p-3 grid grid-cols-2 gap-2.5 items-center bg-gray-50/40">
+                <div className="text-gray-500 flex items-start gap-1.5">
+                  <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-gray-700 block text-[11px]">No Playbook</span>
+                    <span className="text-[10px] text-gray-400">Start from scratch</span>
+                  </div>
+                </div>
+                <div className="text-gray-900 flex items-start gap-1.5 pl-2 border-l border-gray-100">
+                  <Check className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-gray-900 block text-[11px]">Master Playbook</span>
+                    <span className="text-[10px] text-gray-500">Coach Ravikant system</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 3: Workbook */}
+              <div className="p-3 grid grid-cols-2 gap-2.5 items-center">
+                <div className="text-gray-500 flex items-start gap-1.5">
+                  <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-gray-700 block text-[11px]">No Action Plan</span>
+                    <span className="text-[10px] text-gray-400">Trial and error</span>
+                  </div>
+                </div>
+                <div className="text-gray-900 flex items-start gap-1.5 pl-2 border-l border-gray-100">
+                  <Check className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-gray-900 block text-[11px]">7-Day Sprint</span>
+                    <span className="text-[10px] text-gray-500">Daily actionable steps</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 4: Search Blueprints */}
+              <div className="p-3 grid grid-cols-2 gap-2.5 items-center bg-gray-50/40">
+                <div className="text-gray-500 flex items-start gap-1.5">
+                  <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-gray-700 block text-[11px]">Guessing Filters</span>
+                    <span className="text-[10px] text-gray-400">Wasted InMails</span>
+                  </div>
+                </div>
+                <div className="text-gray-900 flex items-start gap-1.5 pl-2 border-l border-gray-100">
+                  <Check className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-gray-900 block text-[11px]">Search Blueprints</span>
+                    <span className="text-[10px] text-gray-500">Tested B2B filter recipes</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 5: AI Prompts */}
+              <div className="p-3 grid grid-cols-2 gap-2.5 items-center">
+                <div className="text-gray-500 flex items-start gap-1.5">
+                  <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-gray-700 block text-[11px]">Manual Outreach</span>
+                    <span className="text-[10px] text-gray-400">Write pitches alone</span>
+                  </div>
+                </div>
+                <div className="text-gray-900 flex items-start gap-1.5 pl-2 border-l border-gray-100">
+                  <Check className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-gray-900 block text-[11px]">AI Workflows</span>
+                    <span className="text-[10px] text-gray-500">ChatGPT & Claude prompts</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 6: Daily Routine */}
+              <div className="p-3 grid grid-cols-2 gap-2.5 items-center bg-gray-50/40">
+                <div className="text-gray-500 flex items-start gap-1.5">
+                  <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-gray-700 block text-[11px]">Doomscrolling</span>
+                    <span className="text-[10px] text-gray-400">Hours spent with 0 leads</span>
+                  </div>
+                </div>
+                <div className="text-gray-900 flex items-start gap-1.5 pl-2 border-l border-gray-100">
+                  <Check className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-gray-900 block text-[11px]">30-Min Daily Habit</span>
+                    <span className="text-[10px] text-gray-500">Structured growth discipline</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 7: Security & Activation */}
+              <div className="p-3 grid grid-cols-2 gap-2.5 items-center">
+                <div className="text-gray-500 flex items-start gap-1.5">
+                  <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-gray-700 block text-[11px]">Self Setup</span>
+                    <span className="text-[10px] text-gray-400">Foreign card conversion fees</span>
+                  </div>
+                </div>
+                <div className="text-gray-900 flex items-start gap-1.5 pl-2 border-l border-gray-100">
+                  <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-gray-900 block text-[11px]">Team-Assisted</span>
+                    <span className="text-[10px] text-emerald-700 font-semibold">Zero-Password Guarantee</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Total Bottom Row */}
+              <div className="p-3.5 bg-gradient-to-r from-red-50/40 via-white to-blue-50/50 grid grid-cols-2 gap-2.5 items-center">
+                <div>
+                  <span className="text-[9px] uppercase font-mono text-gray-400 block font-bold">TOTAL OUT-OF-POCKET:</span>
+                  <span className="font-bold text-red-600 font-mono text-xs">₹15,000 / month</span>
+                  <span className="text-[9px] text-gray-400 block">Recurring monthly billing</span>
+                </div>
+                <div className="pl-2 border-l border-gray-200">
+                  <span className="text-[9px] uppercase font-mono text-emerald-700 block font-bold">YOUR BUNDLE PRICE:</span>
+                  <span className="font-black text-[#0A66C2] font-mono text-base block">₹3,999 <span className="text-[10px] font-normal text-gray-500">Total</span></span>
+                  <span className="text-[9px] text-emerald-700 font-bold block">Save ₹11,001 (73% Arbitrage)</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 2. DESKTOP VIEW (hidden md:block): Preserved Exact 3-Column Table */}

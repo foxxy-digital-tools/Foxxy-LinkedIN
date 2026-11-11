@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Play, Sparkles, ShieldCheck, ChevronRight, FileText, X, CheckCircle, ArrowRight, Zap, Gift } from 'lucide-react';
 import { APP_CONFIG, VSL_TRANSCRIPT } from '../config';
 
-export function HeroModeSwitcher({ onOpenCheckout }) {
+export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
   const [heroMode, setHeroMode] = useState(APP_CONFIG.HERO_MODE_DEFAULT);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
@@ -16,45 +16,49 @@ export function HeroModeSwitcher({ onOpenCheckout }) {
 
   return (
     <div className="relative w-full">
-      {/* Mode Switcher Pill */}
-      <div className="flex items-center justify-end mb-3">
-        <div className="inline-flex items-center p-1 rounded-xl bg-gray-100 border border-gray-200 text-xs font-semibold shadow-inner">
-          <button
-            onClick={() => setHeroMode('INTERACTIVE_GRAPHIC')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
-              heroMode === 'INTERACTIVE_GRAPHIC'
-                ? 'bg-white text-[#0A66C2] shadow-sm font-bold border border-gray-200'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Offer Visualizer</span>
-          </button>
+      {/* Mode Switcher Pill (Hidden on mobile compact to keep focus razor sharp) */}
+      {!isMobileCompact && (
+        <div className="flex items-center justify-end mb-3">
+          <div className="inline-flex items-center p-1 rounded-xl bg-gray-100 border border-gray-200 text-xs font-semibold shadow-inner">
+            <button
+              onClick={() => setHeroMode('INTERACTIVE_GRAPHIC')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                heroMode === 'INTERACTIVE_GRAPHIC'
+                  ? 'bg-white text-[#0A66C2] shadow-sm font-bold border border-gray-200'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span>Offer Visualizer</span>
+            </button>
 
-          <button
-            onClick={() => setHeroMode('VIDEO')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
-              heroMode === 'VIDEO'
-                ? 'bg-[#0A66C2] text-white shadow-sm font-bold'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            <Play className="w-3.5 h-3.5 fill-current" />
-            <span>75s Video Overview</span>
-          </button>
+            <button
+              onClick={() => setHeroMode('VIDEO')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                heroMode === 'VIDEO'
+                  ? 'bg-[#0A66C2] text-white shadow-sm font-bold'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <Play className="w-3.5 h-3.5 fill-current" />
+              <span>75s Video Overview</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* MODE A: Sleek Interactive Visual Artifact (Titanium VIP Pass + 3D Digital Dossiers) */}
-      {heroMode === 'INTERACTIVE_GRAPHIC' ? (
-        <div className="card-elevated rounded-3xl p-5 sm:p-6 border border-blue-100/80 bg-gradient-to-b from-slate-50/50 via-white to-blue-50/30 shadow-xl relative overflow-hidden space-y-4">
+      {heroMode === 'INTERACTIVE_GRAPHIC' || isMobileCompact ? (
+        <div className={`card-elevated rounded-2xl sm:rounded-3xl border border-blue-100/80 bg-gradient-to-b from-slate-50/50 via-white to-blue-50/30 shadow-lg relative overflow-hidden ${
+          isMobileCompact ? 'p-3.5 space-y-3' : 'p-5 sm:p-6 space-y-4'
+        }`}>
           {/* Top Telemetry Pills */}
           <div className="flex items-center justify-between gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs text-[#0A66C2] font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-blue-50 border border-blue-200 text-[11px] sm:text-xs text-[#0A66C2] font-bold">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               Verified Safe Activation
             </span>
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black tracking-wide border border-emerald-200">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] sm:text-xs font-black tracking-wide border border-emerald-200">
               Save ₹11,001 Today
             </span>
           </div>
