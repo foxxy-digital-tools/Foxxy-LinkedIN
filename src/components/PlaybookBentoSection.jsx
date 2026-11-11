@@ -109,10 +109,10 @@ export function PlaybookBentoSection({ onOpenCheckout }) {
 
         <button
           onClick={onOpenCheckout}
-          className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
+          className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap px-6 py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
         >
-          <span>Get the Playbook + Free Sales Nav</span>
-          <ArrowRight className="w-4 h-4" />
+          <span>Get Playbook + Free 1-Month Seat</span>
+          <ArrowRight className="w-4 h-4 flex-shrink-0" />
         </button>
       </div>
     </section>

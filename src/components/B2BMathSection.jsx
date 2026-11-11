@@ -190,7 +190,7 @@ export function B2BMathSection({ onOpenCheckout }) {
           </div>
           <button
             onClick={onOpenCheckout}
-            className="self-start sm:self-auto px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5"
+            className="self-start sm:self-auto flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
           >
             <span>Lock In ₹3,999 Bundle</span>
             <ArrowRight className="w-3.5 h-3.5" />

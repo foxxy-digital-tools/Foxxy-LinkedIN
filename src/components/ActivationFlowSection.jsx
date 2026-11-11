@@ -132,7 +132,7 @@ export function ActivationFlowSection({ onOpenCheckout }) {
 
         <button
           onClick={onOpenCheckout}
-          className="w-full md:w-auto px-6 py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 flex-shrink-0"
+          className="w-full md:w-auto flex-shrink-0 whitespace-nowrap px-6 py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>Claim Free Seat for ₹3,999</span>
           <ArrowRight className="w-4 h-4" />

@@ -97,7 +97,7 @@ export function App() {
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                   <button
                     onClick={() => setIsCheckoutModalOpen(true)}
-                    className="px-7 py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-base tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                    className="flex-shrink-0 whitespace-nowrap px-7 py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-base tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     <span>Claim Toolkit + Free 1-Month Seat</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
