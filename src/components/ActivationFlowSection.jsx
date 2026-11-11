@@ -55,13 +55,13 @@ export function ActivationFlowSection({ onOpenCheckout }) {
       </div>
 
       {/* 4-Step Visual Grid (Clean, cohesive cards with zero awkward empty spaces) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
         {steps.map((st) => {
           const Icon = st.icon;
           return (
             <div
               key={st.num}
-              className="card-elevated rounded-2xl p-6 flex flex-col justify-between hover:border-[#0A66C2]/40 transition-all duration-200 hover:-translate-y-1 relative group"
+              className="card-elevated rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-[#0A66C2]/40 transition-all duration-200 hover:-translate-y-1 relative group"
             >
               <div>
                 {/* Unified Step Header: Icon + Number + Title in one balanced flow */}
@@ -112,19 +112,19 @@ export function ActivationFlowSection({ onOpenCheckout }) {
       </div>
 
       {/* Security Callout Box */}
-      <div className="rounded-2xl bg-gradient-to-r from-blue-50 via-sky-50 to-emerald-50 border border-emerald-300 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 flex-shrink-0 shadow-sm">
-            <Lock className="w-6 h-6" />
+      <div className="rounded-2xl bg-gradient-to-r from-blue-50 via-sky-50 to-emerald-50 border border-emerald-300 p-5 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 shadow-sm">
+        <div className="flex items-start gap-3.5 sm:gap-4">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 flex-shrink-0 shadow-sm mt-0.5 sm:mt-0">
+            <Lock className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <h4 className="text-base sm:text-lg font-bold text-gray-900 flex items-center gap-2">
+            <h4 className="text-sm sm:text-lg font-bold text-gray-900 flex flex-wrap items-center gap-2">
               <span>Zero-Password Security Guarantee</span>
-              <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+              <span className="text-[10px] sm:text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
                 100% Official
               </span>
             </h4>
-            <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed max-w-2xl">
+            <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed max-w-2xl">
               "Never share your LinkedIn password with anyone. Our team activates your 1-Month Sales Navigator Advanced bonus exclusively via your registered email & profile URL. Completely safe and compliant with LinkedIn's official policies."
             </p>
           </div>
@@ -132,10 +132,10 @@ export function ActivationFlowSection({ onOpenCheckout }) {
 
         <button
           onClick={onOpenCheckout}
-          className="w-full md:w-auto flex-shrink-0 whitespace-nowrap px-6 py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full md:w-auto flex-shrink-0 whitespace-nowrap px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>Claim Free Seat for ₹3,999</span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-4 h-4 flex-shrink-0" />
         </button>
       </div>
     </section>

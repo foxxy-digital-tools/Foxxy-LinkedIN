@@ -92,16 +92,16 @@ export function PlaybookBentoSection({ onOpenCheckout }) {
       </div>
 
       {/* Also includes AI prompts teaser */}
-      <div className="rounded-2xl bg-gray-50 border border-gray-200 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-[#0A66C2] flex items-center justify-center text-white shadow-sm flex-shrink-0">
-            <Sparkles className="w-6 h-6" />
+      <div className="rounded-2xl bg-gray-50 border border-gray-200 p-5 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6">
+        <div className="flex items-start sm:items-center gap-3.5 sm:gap-4">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#0A66C2] flex items-center justify-center text-white shadow-sm flex-shrink-0 mt-0.5 sm:mt-0">
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <h4 className="text-lg font-bold text-gray-900">
+            <h4 className="text-base sm:text-lg font-bold text-gray-900">
               Includes Copy-Ready AI Prompts
             </h4>
-            <p className="text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
               ChatGPT & Claude prompts built into the playbook so you can accelerate profile writing, content creation, and prospect research.
             </p>
           </div>
@@ -109,7 +109,7 @@ export function PlaybookBentoSection({ onOpenCheckout }) {
 
         <button
           onClick={onOpenCheckout}
-          className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap px-6 py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>Get Playbook + Free 1-Month Seat</span>
           <ArrowRight className="w-4 h-4 flex-shrink-0" />

@@ -149,9 +149,9 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
   return (
     <div
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm overflow-y-auto animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-900/50 backdrop-blur-sm overflow-y-auto animate-fadeIn"
     >
-      <div className="relative w-full max-w-lg bg-white rounded-3xl border border-gray-200 shadow-2xl p-6 sm:p-8 my-8 text-gray-900 animate-fade-in-up">
+      <div className="relative w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl border border-gray-200 shadow-2xl p-5 sm:p-8 max-h-[92vh] overflow-y-auto text-gray-900 animate-fade-in-up">
         {/* Prominent, obvious Close Button inside Header */}
         <div className="flex items-start justify-between pb-4 border-b border-gray-100 mb-5">
           <div>
@@ -169,7 +169,7 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-900 transition-colors flex-shrink-0"
+            className="p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0 cursor-pointer"
             aria-label="Close dialog"
             title="Close (Esc)"
           >
@@ -189,7 +189,7 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
               value={formData.fullName}
               onChange={handleChange}
               placeholder="e.g. Vikramaditya Sharma"
-              className={`w-full px-4 py-2.5 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
+              className={`w-full px-4 py-3 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
                 errors.fullName ? 'border-red-400 bg-red-50/20' : 'border-gray-200'
               }`}
             />
@@ -208,17 +208,18 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
               <span className="text-[10px] text-gray-400 font-mono">10-Digit Mobile</span>
             </div>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-xs font-mono font-medium">
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm sm:text-xs font-mono font-medium">
                 +91
               </span>
               <input
                 type="tel"
+                inputMode="numeric"
                 name="phone"
                 maxLength={10}
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="9876543210"
-                className={`w-full pl-12 pr-4 py-2.5 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
+                className={`w-full pl-12 pr-4 py-3 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
                   errors.phone ? 'border-red-400 bg-red-50/20' : 'border-gray-200'
                 }`}
               />
@@ -236,11 +237,12 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
             </label>
             <input
               type="email"
+              inputMode="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="name@company.com or personal@gmail.com"
-              className={`w-full px-4 py-2.5 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
+              className={`w-full px-4 py-3 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
                 errors.email ? 'border-red-400 bg-red-50/20' : 'border-gray-200'
               }`}
             />
@@ -264,7 +266,7 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
               value={formData.profileUrl}
               onChange={handleChange}
               placeholder="https://www.linkedin.com/in/yourprofile"
-              className={`w-full px-4 py-2.5 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
+              className={`w-full px-4 py-3 rounded-xl bg-gray-50 border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:bg-white transition-all ${
                 errors.profileUrl ? 'border-red-400 bg-red-50/20' : 'border-gray-200'
               }`}
             />

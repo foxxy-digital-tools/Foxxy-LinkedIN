@@ -65,50 +65,51 @@ export function HeroModeSwitcher({ onOpenCheckout }) {
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/15 rounded-full blur-2xl pointer-events-none"></div>
 
             {/* Pass Header */}
-            <div className="flex items-center justify-between gap-3 mb-4">
-              <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-white text-[#0A66C2] flex items-center justify-center font-black text-2xl shadow-md flex-shrink-0">
+            <div className="flex items-center justify-between gap-2 sm:gap-3 mb-4">
+              <div className="flex items-center gap-2 sm:gap-2.5">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white text-[#0A66C2] flex items-center justify-center font-black text-xl sm:text-2xl shadow-md flex-shrink-0">
                   in
                 </div>
                 <div>
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-sky-200 font-bold block">
+                  <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-widest text-sky-200 font-bold block">
                     SPONSORED EXECUTIVE SEAT
                   </span>
-                  <span className="text-xs font-mono text-emerald-300 font-bold flex items-center gap-1">
+                  <span className="text-[11px] sm:text-xs font-mono text-emerald-300 font-bold flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                     ALLOCATION READY
                   </span>
                 </div>
               </div>
 
-              <span className="px-2.5 py-1 rounded-full bg-[#D4FF00] text-black font-black text-[10px] uppercase shadow-sm font-mono">
+              <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#D4FF00] text-black font-black text-[9px] sm:text-[10px] uppercase shadow-sm font-mono flex-shrink-0 whitespace-nowrap">
                 FREE BONUS • WORTH ₹15,000
               </span>
             </div>
 
             {/* Product Title */}
-            <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4">
+            <h4 className="text-lg sm:text-2xl font-black text-white tracking-tight mb-3 sm:mb-4">
               LinkedIn Sales Navigator Advanced
             </h4>
 
             {/* Spec Badges Grid */}
-            <div className="grid grid-cols-3 gap-2 pt-3 border-t border-white/20 text-xs">
-              <div className="p-2 rounded-lg bg-white/10 backdrop-blur-xs">
-                <span className="text-sky-200 block text-[9px] uppercase font-mono">Official Retail:</span>
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-3 border-t border-white/20 text-xs">
+              <div className="p-1.5 sm:p-2 rounded-lg bg-white/10 backdrop-blur-xs text-center sm:text-left">
+                <span className="text-sky-200 block text-[8px] sm:text-[9px] uppercase font-mono">Official Retail:</span>
                 <span className="font-bold text-white/70 line-through decoration-red-400 font-mono text-xs sm:text-sm">
                   ₹15,000
                 </span>
               </div>
-              <div className="p-2 rounded-lg bg-white/10 backdrop-blur-xs">
-                <span className="text-sky-200 block text-[9px] uppercase font-mono">Your Price:</span>
+              <div className="p-1.5 sm:p-2 rounded-lg bg-white/10 backdrop-blur-xs text-center sm:text-left">
+                <span className="text-sky-200 block text-[8px] sm:text-[9px] uppercase font-mono">Your Price:</span>
                 <span className="font-black text-[#D4FF00] font-mono text-xs sm:text-sm">
                   ₹0 (FREE)
                 </span>
               </div>
-              <div className="p-2 rounded-lg bg-white/10 backdrop-blur-xs">
-                <span className="text-sky-200 block text-[9px] uppercase font-mono">Security:</span>
-                <span className="font-bold text-emerald-300 font-mono text-xs sm:text-sm flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5" /> No Password
+              <div className="p-1.5 sm:p-2 rounded-lg bg-white/10 backdrop-blur-xs text-center sm:text-left">
+                <span className="text-sky-200 block text-[8px] sm:text-[9px] uppercase font-mono">Security:</span>
+                <span className="font-bold text-emerald-300 font-mono text-[11px] sm:text-sm flex items-center justify-center sm:justify-start gap-1">
+                  <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                  <span>No Password</span>
                 </span>
               </div>
             </div>

@@ -13,6 +13,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
   const [errors, setErrors] = useState({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [showMobileBreakdown, setShowMobileBreakdown] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -156,6 +157,82 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
           {/* Left Column: Form Inputs (7 Cols) */}
           <div className="lg:col-span-7 space-y-6">
+            {/* DEDICATED MOBILE ORDER SUMMARY (lg:hidden): Shows upfront before inputs */}
+            <div className="lg:hidden rounded-2xl bg-blue-50/70 border border-blue-200 p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] font-mono font-bold text-[#0A66C2] uppercase tracking-wider block">
+                    PACKAGE SUMMARY
+                  </span>
+                  <span className="text-sm font-black text-gray-900 block">
+                    LinkedIn Growth Toolkit + Free Seat
+                  </span>
+                </div>
+                <div className="text-right">
+                  <span className="text-base font-black text-[#0A66C2] font-mono block">
+                    {APP_CONFIG.PRICE_FORMATTED}
+                  </span>
+                  <span className="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
+                    Save ₹18,999
+                  </span>
+                </div>
+              </div>
+
+              {/* Key inclusions checklist on mobile */}
+              <div className="space-y-1.5 pt-2 border-t border-blue-100 text-xs">
+                <div className="flex items-center gap-1.5 text-gray-800 font-medium">
+                  <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span>1-Mo Sales Nav Advanced (<strong className="text-[#0A66C2]">Worth ₹15,000 FREE</strong>)</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-gray-700">
+                  <Check className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0" />
+                  <span>LinkedIn Foundation Playbook + 7-Day Sprint</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-gray-700">
+                  <Check className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0" />
+                  <span>Zero-Password Guaranteed Safe Activation</span>
+                </div>
+              </div>
+
+              {/* Expandable full breakdown toggle for mobile */}
+              <button
+                type="button"
+                onClick={() => setShowMobileBreakdown(!showMobileBreakdown)}
+                className="w-full pt-2 border-t border-blue-100 flex items-center justify-between text-[11px] font-bold text-[#0A66C2] hover:underline"
+              >
+                <span>{showMobileBreakdown ? 'Hide price breakdown ▲' : 'View full itemized breakdown (₹22,998 value) ▼'}</span>
+              </button>
+
+              {showMobileBreakdown && (
+                <div className="pt-2 space-y-1.5 text-[11px] text-gray-600 border-t border-blue-100 animate-fadeIn">
+                  <div className="flex justify-between">
+                    <span>LinkedIn Foundation Playbook:</span>
+                    <span className="font-mono text-gray-500">₹4,999</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Sales Nav Accelerator Workbook:</span>
+                    <span className="font-mono text-gray-500">₹2,999</span>
+                  </div>
+                  <div className="flex justify-between text-emerald-700 font-bold">
+                    <span>1 Month Sales Nav Advanced:</span>
+                    <span className="font-mono">FREE (₹15,000)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>AI Prompts & Search Blueprints:</span>
+                    <span className="text-emerald-600 font-mono">INCLUDED</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400 pt-1 border-t border-blue-100">
+                    <span>Total Retail Value:</span>
+                    <span className="line-through font-mono">₹22,998</span>
+                  </div>
+                  <div className="flex justify-between text-emerald-700 font-bold">
+                    <span>Sponsored Rebate:</span>
+                    <span className="font-mono">-₹18,999</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div>
               <div className="flex items-center justify-between mb-1">
                 <span className="text-xs font-mono text-[#0A66C2] font-bold uppercase tracking-wider">
@@ -185,7 +262,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="e.g. Vikramaditya Sharma"
-                  className={`w-full px-4 py-2.5 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                  className={`w-full px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
                     errors.fullName ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
@@ -205,19 +282,20 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                   <span className="text-[10px] text-gray-400 font-mono">10-Digit Mobile</span>
                 </div>
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-mono font-medium">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm sm:text-xs font-mono font-medium">
                     +91
                   </span>
                   <input
                     type="tel"
+                    inputMode="numeric"
                     name="phone"
                     maxLength={10}
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="9876543210"
-                    className={`w-full pl-12 pr-4 py-2.5 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
-                      errors.phone ? 'border-red-400' : 'border-gray-200'
-                    }`}
+                    className={`w-full pl-12 pr-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                    errors.phone ? 'border-red-400' : 'border-gray-200'
+                  }`}
                   />
                 </div>
                 <p className="mt-1 text-[11px] text-gray-400">
@@ -237,11 +315,12 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                 </label>
                 <input
                   type="email"
+                  inputMode="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="name@company.com or personal@gmail.com"
-                  className={`w-full px-4 py-2.5 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                  className={`w-full px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
                     errors.email ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
@@ -266,7 +345,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                   value={formData.profileUrl}
                   onChange={handleChange}
                   placeholder="https://www.linkedin.com/in/yourname"
-                  className={`w-full px-4 py-2.5 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                  className={`w-full px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
                     errors.profileUrl ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
@@ -317,8 +396,8 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
             </form>
           </div>
 
-          {/* Right Column: Order Summary (5 Cols) */}
-          <div className="lg:col-span-5 rounded-2xl bg-gray-50 border border-gray-200 p-6 flex flex-col justify-between">
+          {/* Right Column: Order Summary (5 Cols) - Preserved on Desktop, Hidden on Mobile */}
+          <div className="hidden lg:flex lg:col-span-5 rounded-2xl bg-gray-50 border border-gray-200 p-6 flex-col justify-between">
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-gray-200 mb-4">
                 <span className="text-xs font-mono text-gray-500 uppercase tracking-wider font-semibold">

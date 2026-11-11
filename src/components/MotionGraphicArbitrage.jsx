@@ -94,7 +94,7 @@ export function MotionGraphicArbitrage() {
 
           <div className="space-y-2.5 pt-3 border-t border-blue-100 text-sm text-gray-700">
             {/* Highlighted VIP Attraction */}
-            <div className="p-2.5 -mx-1 rounded-xl bg-gradient-to-r from-blue-50 via-sky-50 to-blue-50/60 border border-blue-200 flex items-center justify-between gap-2 shadow-sm">
+            <div className="p-2.5 -mx-1 rounded-xl bg-gradient-to-r from-blue-50 via-sky-50 to-blue-50/60 border border-blue-200 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 shadow-sm">
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 rounded-full bg-[#0A66C2] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
                   <Check className="w-3.5 h-3.5 stroke-[3]" />

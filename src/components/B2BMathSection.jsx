@@ -130,27 +130,27 @@ export function B2BMathSection({ onOpenCheckout }) {
       </div>
 
       {/* Interactive ROI Calculator Widget */}
-      <div className="card-elevated rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-50/50 via-white to-emerald-50/50 border border-blue-200 mb-12">
+      <div className="card-elevated rounded-2xl p-5 sm:p-8 bg-gradient-to-r from-blue-50/50 via-white to-emerald-50/50 border border-blue-200 mb-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold">
               <Calculator className="w-3.5 h-3.5" />
               INTERACTIVE PIPELINE CALCULATOR
             </div>
-            <h3 className="text-xl font-bold text-gray-900">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900">
               Calculate Your Return on ₹3,999
             </h3>
             <p className="text-xs sm:text-sm text-gray-600">
               Select your typical B2B client value to see the ROI of closing just <strong>one deal</strong> during your 1-month free Sales Nav access:
             </p>
 
-            {/* Deal Size Buttons */}
-            <div className="flex flex-wrap gap-2 pt-2">
+            {/* Deal Size Buttons - Touch friendly and responsive */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
               {dealSizes.map((deal) => (
                 <button
                   key={deal.value}
                   onClick={() => setSelectedDealSize(deal.value)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                  className={`px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center ${
                     selectedDealSize === deal.value
                       ? 'bg-[#0A66C2] text-white shadow-md'
                       : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
@@ -163,7 +163,7 @@ export function B2BMathSection({ onOpenCheckout }) {
           </div>
 
           {/* Dynamic ROI Result Box */}
-          <div className="p-5 rounded-2xl bg-white border-2 border-emerald-300 shadow-md flex-shrink-0 text-center min-w-[240px]">
+          <div className="p-5 rounded-2xl bg-white border-2 border-emerald-300 shadow-md flex-shrink-0 text-center w-full md:w-auto md:min-w-[240px]">
             <span className="text-xs font-mono text-gray-500 uppercase block mb-1">
               Projected ROI on ₹3,999:
             </span>
@@ -177,9 +177,10 @@ export function B2BMathSection({ onOpenCheckout }) {
         </div>
       </div>
 
-      {/* Side-by-Side Comparison Table with Heavily Highlighted Main Row */}
+      {/* Side-by-Side Comparison: Desktop Table + Dedicated Mobile Cards */}
       <div className="card-elevated rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
-        <div className="p-6 border-b border-gray-200 bg-gray-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        {/* Table / Card Header */}
+        <div className="p-5 sm:p-6 border-b border-gray-200 bg-gray-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h3 className="text-lg sm:text-xl font-bold text-gray-900">
               Detailed Feature-by-Feature Comparison
@@ -190,14 +191,156 @@ export function B2BMathSection({ onOpenCheckout }) {
           </div>
           <button
             onClick={onOpenCheckout}
-            className="self-start sm:self-auto flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+            className="self-stretch sm:self-auto flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <span>Lock In ₹3,999 Bundle</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* 1. DEDICATED MOBILE VIEW (md:hidden): Tailored Touch Cards */}
+        <div className="md:hidden p-4 space-y-3.5 bg-gray-50/40">
+          {/* Quick Legend / Header Pill */}
+          <div className="grid grid-cols-2 gap-2 text-[10px] font-mono font-bold text-center pb-1">
+            <div className="p-2 rounded-lg bg-red-100/60 text-red-700 border border-red-200">
+              ❌ OPTION A: DIRECT NAV (₹15,000/mo)
+            </div>
+            <div className="p-2 rounded-lg bg-blue-100 text-[#0A66C2] border border-blue-200">
+              ✅ OPTION B: CR ACADEMY (₹3,999)
+            </div>
+          </div>
+
+          {comparisonRows.map((row, idx) => {
+            if (row.isMainBonus) {
+              return (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-gradient-to-b from-blue-50 via-sky-50/40 to-blue-50/80 border-2 border-[#0A66C2] shadow-md space-y-3 relative overflow-hidden"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#0A66C2] text-white text-[10px] font-black uppercase tracking-wider shadow-xs">
+                      ⭐ MAIN ATTRACTION • WORTH ₹15,000
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full">
+                      100% FREE
+                    </span>
+                  </div>
+
+                  <div>
+                    <h4 className="text-base font-black text-gray-900 leading-snug">
+                      {row.feature}
+                    </h4>
+                    <p className="text-xs text-gray-600 mt-0.5">
+                      {row.featureSub}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 pt-1 text-xs">
+                    <div className="p-2.5 rounded-xl bg-white border border-red-200 flex items-start gap-2">
+                      <X className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-[10px] font-mono uppercase text-gray-400 font-bold block">
+                          Direct LinkedIn Billing:
+                        </span>
+                        <span className="text-red-600 font-mono font-bold line-through text-sm">
+                          ₹15,000 / month
+                        </span>
+                        <span className="text-[10px] text-gray-400 block">
+                          ($159.99 auto-billed every 30 days)
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-gradient-to-r from-[#0A66C2] to-[#084e96] text-white shadow-sm flex items-start gap-2">
+                      <Check className="w-4 h-4 text-emerald-300 stroke-[3] flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-sky-200 text-[10px] font-mono uppercase font-bold block">
+                          Foxxy × CR Academy Bundle:
+                        </span>
+                        <span className="font-black text-white text-sm block">
+                          1 Month INCLUDED 100% FREE
+                        </span>
+                        <span className="text-sky-100 text-[10px] block mt-0.5">
+                          ✓ Official sponsored seat • Zero password needed
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            if (row.isTotalRow) {
+              return (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 via-white to-emerald-50 border-2 border-emerald-300 shadow-md space-y-2.5"
+                >
+                  <span className="inline-block text-[10px] font-mono font-bold uppercase text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300">
+                    TOTAL INVESTMENT REALITY
+                  </span>
+                  <div>
+                    <h4 className="text-base font-black text-gray-900">
+                      {row.feature}
+                    </h4>
+                    <p className="text-[11px] text-gray-500">{row.featureSub}</p>
+                  </div>
+
+                  <div className="space-y-2 pt-1 text-xs">
+                    <div className="p-2.5 rounded-xl bg-red-50/70 border border-red-200 flex items-center justify-between">
+                      <span className="text-gray-600 font-medium">Direct LinkedIn:</span>
+                      <span className="text-red-600 font-mono font-bold">₹15,000/mo (Recurring)</span>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-300 flex items-center justify-between">
+                      <div>
+                        <span className="text-emerald-900 font-bold block">CR Academy Bundle:</span>
+                        <span className="text-[10px] text-emerald-700 font-medium">Save ₹11,001 (73% Arbitrage)</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-lg font-black text-[#0A66C2] font-mono block">₹3,999</span>
+                        <span className="text-[9px] text-gray-500 uppercase font-mono">One-Time Total</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <div
+                key={idx}
+                className="p-3.5 rounded-xl bg-white border border-gray-200 shadow-xs space-y-2"
+              >
+                <div>
+                  <h5 className="text-xs font-bold text-gray-900">{row.feature}</h5>
+                  <p className="text-[11px] text-gray-500 leading-tight">{row.featureSub}</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-1.5 border-t border-gray-100 text-[11px]">
+                  <div className="p-2 rounded-lg bg-red-50/40 border border-red-100">
+                    <div className="flex items-center gap-1 text-red-500 font-bold mb-0.5 text-[10px] font-mono uppercase">
+                      <X className="w-3 h-3 flex-shrink-0" />
+                      <span>Direct</span>
+                    </div>
+                    <span className="text-gray-600 font-medium block leading-tight">{row.optionA}</span>
+                  </div>
+
+                  <div className="p-2 rounded-lg bg-blue-50/60 border border-blue-100">
+                    <div className="flex items-center gap-1 text-[#0A66C2] font-bold mb-0.5 text-[10px] font-mono uppercase">
+                      <Check className="w-3 h-3 flex-shrink-0" />
+                      <span>Toolkit</span>
+                    </div>
+                    <span className="text-gray-900 font-bold block leading-tight">{row.optionB}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 2. DESKTOP VIEW (hidden md:block): Preserved Exact 3-Column Table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left text-xs sm:text-sm">
             <thead>
               <tr className="border-b border-gray-200 bg-gray-100/60">
@@ -307,21 +450,21 @@ export function B2BMathSection({ onOpenCheckout }) {
           </table>
         </div>
 
-        {/* Table Bottom Callout */}
+        {/* Table / Mobile Bottom Callout */}
         <div className="p-4 sm:p-6 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <div className="flex items-center gap-2 text-xs text-gray-600 text-center sm:text-left">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
             <span>Zero LinkedIn password needed • Instant PDF downloads • Limited to 100 Seats</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="text-right">
+          <div className="flex items-center justify-between w-full sm:w-auto gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 border-gray-200">
+            <div className="text-left sm:text-right">
               <span className="text-[10px] text-gray-500 block uppercase font-mono">Arbitrage Savings:</span>
-              <span className="text-base font-black text-emerald-700 font-mono">Save ₹11,001 (73% Off)</span>
+              <span className="text-sm sm:text-base font-black text-emerald-700 font-mono">Save ₹11,001 (73% Off)</span>
             </div>
             <button
               onClick={onOpenCheckout}
-              className="px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs shadow-md transition-all"
+              className="flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs shadow-md transition-all cursor-pointer"
             >
               Claim for ₹3,999 →
             </button>

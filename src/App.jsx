@@ -97,13 +97,13 @@ export function App() {
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                   <button
                     onClick={() => setIsCheckoutModalOpen(true)}
-                    className="flex-shrink-0 whitespace-nowrap px-7 py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-base tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                    className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-sm sm:text-base tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     <span>Claim Toolkit + Free 1-Month Seat</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
 
-                  <div className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-xs font-mono">
+                  <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-xs font-mono">
                     <span className="text-gray-400 line-through">₹15,000</span>
                     <span className="text-base font-black text-[#0A66C2]">₹3,999</span>
                     <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full">
@@ -161,8 +161,32 @@ export function App() {
         <FAQSection />
       </main>
 
-      {/* 10. Footer Section */}
-      <FooterSection />
+      {/* 10. Footer Section with bottom padding for mobile sticky bar */}
+      <div className="pb-16 md:pb-0">
+        <FooterSection />
+      </div>
+
+      {/* High-Converting Sticky Bottom Bar for Mobile Viewports (md:hidden) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 flex items-center justify-between shadow-2xl animate-fadeIn">
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm font-black text-[#0A66C2] font-mono">₹3,999</span>
+            <span className="text-[10px] font-mono line-through text-gray-400">₹15,000</span>
+          </div>
+          <span className="text-[10px] text-emerald-700 font-bold flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            1-Mo Seat FREE • Save 73%
+          </span>
+        </div>
+
+        <button
+          onClick={() => setIsCheckoutModalOpen(true)}
+          className="flex-shrink-0 whitespace-nowrap px-4 py-2 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
+        >
+          <span>Claim Free Seat</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </button>
+      </div>
 
       {/* Streamlined, Easy-to-Dismiss Checkout Modal */}
       <CheckoutModal

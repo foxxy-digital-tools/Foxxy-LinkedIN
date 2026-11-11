@@ -81,21 +81,22 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
   return (
     <header className="sticky top-0 z-50 w-full shadow-sm">
       {/* 1. Urgency Top Ticker (Replaced "COHORT ALERT" with "SPECIAL OFFER") */}
-      <div className="bg-[#0A66C2] px-3 py-2 text-xs sm:text-sm text-white font-medium">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+      <div className="bg-[#0A66C2] px-2.5 sm:px-3 py-2 text-xs sm:text-sm text-white font-medium">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden text-ellipsis whitespace-nowrap min-w-0">
             <span className="flex h-2 w-2 relative flex-shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
             </span>
-            <span className="font-semibold text-red-300 flex items-center gap-1">
+            <span className="font-semibold text-red-300 flex items-center gap-1 flex-shrink-0">
               <Zap className="w-3.5 h-3.5 fill-current text-red-400" />
-              SPECIAL OFFER:
+              <span className="hidden xs:inline">SPECIAL OFFER:</span>
+              <span className="xs:hidden">OFFER:</span>
             </span>
             <span className="hidden sm:inline">
               1 Month LinkedIn Sales Navigator Advanced (Worth ₹15,000) FREE with the Toolkit —
             </span>
-            <span className="font-bold underline decoration-red-400 underline-offset-2">
+            <span className="font-bold underline decoration-red-400 underline-offset-2 truncate">
               Only {remainingSeats} of {APP_CONFIG.TOTAL_SEATS} Sponsored Seats Left!
             </span>
           </div>
@@ -103,24 +104,25 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
           <a
             href="#checkout"
             onClick={scrollToCheckout}
-            className="flex-shrink-0 text-[11px] sm:text-xs font-bold text-white bg-red-600 hover:bg-red-500 px-3.5 py-1 rounded-full transition-all flex items-center gap-1 shadow-sm"
+            className="flex-shrink-0 text-[11px] sm:text-xs font-bold text-white bg-red-600 hover:bg-red-500 px-2.5 py-1 sm:px-3.5 sm:py-1 rounded-full transition-all flex items-center gap-1 shadow-sm whitespace-nowrap"
           >
-            Claim Free Seat <ArrowRight className="w-3 h-3" />
+            <span>Claim Free Seat</span>
+            <ArrowRight className="w-3 h-3 flex-shrink-0" />
           </a>
         </div>
       </div>
 
       {/* 2. Main Navigation Bar (Clean Co-Brands, zero empty space) */}
-      <nav className="bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 lg:px-8 py-2.5 sm:py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Co-Brands: Guaranteed visible together with no awkward gaps */}
-          <div className="flex items-center gap-2 sm:gap-3">
+      <nav className="bg-white/95 backdrop-blur-md border-b border-gray-200 px-3 sm:px-4 lg:px-8 py-2 sm:py-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          {/* Co-Brands: Scaled for mobile viewports */}
+          <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
             <a href="#" className="flex items-center hover:opacity-95 transition-opacity">
-              <FoxxyLogo className="h-8 sm:h-9" />
+              <FoxxyLogo className="h-7 sm:h-9" />
             </a>
-            <span className="text-gray-400 font-light text-lg select-none">×</span>
+            <span className="text-gray-400 font-light text-base sm:text-lg select-none">×</span>
             <a href="#coach" className="flex items-center hover:opacity-95 transition-opacity">
-              <CRAcademyBadge className="h-7 sm:h-8" />
+              <CRAcademyBadge className="h-6 sm:h-8" />
             </a>
           </div>
 
@@ -149,7 +151,7 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
           </div>
 
           {/* Right: Live Remaining Seats + CTA Button */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-medium text-[#0A66C2]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>Available Seats:</span>
@@ -158,17 +160,17 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
 
             <button
               onClick={scrollToCheckout}
-              className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 shadow-sm hover:shadow"
+              className="px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs sm:text-sm font-bold transition-all flex items-center gap-1 sm:gap-1.5 shadow-sm hover:shadow flex-shrink-0 whitespace-nowrap cursor-pointer"
             >
-              <span>Claim Seat</span>
+              <span className="hidden xs:inline">Claim Seat</span>
               <span className="font-mono text-red-300">₹3,999</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-500 hover:text-gray-900 rounded-lg border border-gray-200"
+              className="md:hidden p-1.5 sm:p-2 text-gray-500 hover:text-gray-900 rounded-lg border border-gray-200 flex-shrink-0 cursor-pointer"
               aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -69,20 +69,20 @@ export function AcceleratorStepperSection({ onOpenCheckout }) {
       </div>
 
       {/* Stepper Container */}
-      <div className="card-elevated rounded-2xl p-6 sm:p-8">
-        {/* Step Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 border-b border-gray-200 no-scrollbar">
+      <div className="card-elevated rounded-2xl p-5 sm:p-8">
+        {/* Step Tabs with touch scroll */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 sm:pb-4 mb-6 sm:mb-8 border-b border-gray-200 no-scrollbar -mx-1 px-1">
           {daysData.map((day, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}
-              className={`flex-shrink-0 flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`flex-shrink-0 flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeTab === idx
                   ? 'bg-[#0A66C2] text-white shadow-sm'
                   : 'bg-gray-50 border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100'
               }`}
             >
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
               <span>{day.tabLabel}</span>
               <span className="hidden md:inline text-xs font-normal opacity-80">• {day.title}</span>
             </button>
@@ -96,39 +96,40 @@ export function AcceleratorStepperSection({ onOpenCheckout }) {
               <span className="text-xs font-mono font-bold text-[#0A66C2] uppercase tracking-wider block mb-1">
                 SPRINT PHASE {activeTab + 1} OF 4
               </span>
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
                 {daysData[activeTab].title}
               </h3>
-              <h4 className="text-sm font-semibold text-gray-500 mt-1">
+              <h4 className="text-xs sm:text-sm font-semibold text-gray-500 mt-1">
                 {daysData[activeTab].subtitle}
               </h4>
-              <p className="mt-3 text-sm text-gray-600 leading-relaxed max-w-2xl">
+              <p className="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed max-w-2xl">
                 {daysData[activeTab].goal}
               </p>
             </div>
 
             {/* What you'll achieve */}
-            <div className="space-y-3">
+            <div className="space-y-2.5 sm:space-y-3">
               <span className="text-xs font-mono uppercase tracking-wider text-gray-400 font-bold block">
                 What you'll implement:
               </span>
               {daysData[activeTab].points.map((pt, pIdx) => (
-                <div key={pIdx} className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50 border border-gray-200">
+                <div key={pIdx} className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-gray-50 border border-gray-200">
                   <CheckCircle2 className="w-4 h-4 text-[#0A66C2] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700 font-medium">{pt}</span>
+                  <span className="text-xs sm:text-sm text-gray-700 font-medium">{pt}</span>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4 flex items-center justify-between border-t border-gray-200">
+            <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-gray-200">
               <span className="text-xs text-gray-400">
                 Full step-by-step instructions, templates & exercises inside the workbook.
               </span>
               <button
                 onClick={onOpenCheckout}
-                className="text-xs font-bold text-[#0A66C2] hover:underline flex items-center gap-1"
+                className="self-start sm:self-auto text-xs font-bold text-[#0A66C2] hover:underline flex items-center gap-1 cursor-pointer"
               >
-                Claim Toolkit to Access →
+                <span>Claim Toolkit to Access</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
