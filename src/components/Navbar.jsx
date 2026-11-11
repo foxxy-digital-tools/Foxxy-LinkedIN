@@ -1,11 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FoxxyLogo, CRAcademyBadge } from './FoxxyLogoSVG';
 import { Menu, X, ArrowRight, Zap, ShieldCheck } from 'lucide-react';
 import { APP_CONFIG } from '../config';
 
 export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const remainingSeats = Math.max(1, APP_CONFIG.TOTAL_SEATS - claimedSeats);
+
+  const navItems = [
+    { id: 'the-math', label: 'The Math' },
+    { id: 'whats-inside', label: "What's Inside" },
+    { id: 'activation', label: 'How It Works' },
+    { id: 'faq', label: 'FAQ' },
+  ];
+
+  // Scrollspy: dynamically set active section as the user scrolls
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 140;
+
+      const mathEl = document.getElementById('the-math');
+      const insideEl = document.getElementById('whats-inside');
+      const activationEl = document.getElementById('activation');
+      const faqEl = document.getElementById('faq');
+
+      if (!mathEl) return;
+
+      const mathTop = mathEl.offsetTop;
+      const insideTop = insideEl ? insideEl.offsetTop : mathTop + 1000;
+      const activationTop = activationEl ? activationEl.offsetTop : insideTop + 1000;
+      const faqTop = faqEl ? faqEl.offsetTop : activationTop + 1000;
+
+      // Bottom of page check (activate FAQ if near bottom)
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 150) {
+        setActiveSection('faq');
+        return;
+      }
+
+      if (scrollPosition < mathTop) {
+        setActiveSection('');
+      } else if (scrollPosition >= mathTop && scrollPosition < insideTop) {
+        setActiveSection('the-math');
+      } else if (scrollPosition >= insideTop && scrollPosition < activationTop) {
+        setActiveSection('whats-inside');
+      } else if (scrollPosition >= activationTop && scrollPosition < faqTop) {
+        setActiveSection('activation');
+      } else if (scrollPosition >= faqTop) {
+        setActiveSection('faq');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    setActiveSection(id);
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   const scrollToCheckout = (e) => {
     e.preventDefault();
@@ -63,20 +124,28 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
             </a>
           </div>
 
-          {/* Center: Navigation Links */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-semibold text-gray-600">
-            <a href="#the-math" className="hover:text-[#0A66C2] transition-colors">
-              The Math
-            </a>
-            <a href="#whats-inside" className="hover:text-[#0A66C2] transition-colors">
-              What's Inside
-            </a>
-            <a href="#activation" className="hover:text-[#0A66C2] transition-colors">
-              How It Works
-            </a>
-            <a href="#faq" className="hover:text-[#0A66C2] transition-colors">
-              FAQ
-            </a>
+          {/* Center: Navigation Links with Active State Tracking */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`relative py-1.5 font-bold transition-all ${
+                    isActive
+                      ? 'text-[#0A66C2]'
+                      : 'text-gray-600 hover:text-[#0A66C2]'
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-[#0A66C2] rounded-full animate-fadeIn" />
+                  )}
+                </a>
+              );
+            })}
           </div>
 
           {/* Right: Live Remaining Seats + CTA Button */}
@@ -92,7 +161,7 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
               className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 shadow-sm hover:shadow"
             >
               <span>Claim Seat</span>
-              <span className="font-mono text-yellow-300">₹3,999</span>
+              <span className="font-mono text-red-300">₹3,999</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
 
@@ -107,24 +176,32 @@ export function Navbar({ onOpenCheckout, claimedSeats = 89 }) {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Menu with Active States */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-3 pt-3 border-t border-gray-200 flex flex-col gap-2 text-sm font-medium text-gray-700 px-2 animate-fadeIn">
-            <a href="#the-math" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[#0A66C2]">
-              The Math
-            </a>
-            <a href="#whats-inside" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[#0A66C2]">
-              What's Inside
-            </a>
-            <a href="#activation" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[#0A66C2]">
-              How Activation Works
-            </a>
-            <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-2 hover:text-[#0A66C2]">
-              FAQ
-            </a>
+          <div className="md:hidden mt-3 pt-3 border-t border-gray-200 flex flex-col gap-1.5 text-sm font-medium px-2 animate-fadeIn">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    setMobileMenuOpen(false);
+                    handleNavClick(e, item.id);
+                  }}
+                  className={`py-2 px-3 rounded-xl font-bold transition-colors ${
+                    isActive
+                      ? 'bg-blue-50 text-[#0A66C2]'
+                      : 'text-gray-700 hover:text-[#0A66C2] hover:bg-gray-50'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
             <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
               <span>Sponsored Seats Left:</span>
-              <span className="font-bold text-[#0A66C2] font-mono">{remainingSeats} of 100</span>
+              <span className="font-bold text-[#0A66C2] font-mono">{remainingSeats} of {APP_CONFIG.TOTAL_SEATS}</span>
             </div>
           </div>
         )}
