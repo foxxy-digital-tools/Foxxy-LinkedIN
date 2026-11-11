@@ -45,109 +45,123 @@ export function HeroModeSwitcher({ onOpenCheckout }) {
         </div>
       </div>
 
-      {/* MODE A: Interactive VIP Card Stack */}
+      {/* MODE A: Sleek Interactive Visual Artifact (Titanium VIP Pass + 3D Digital Dossiers) */}
       {heroMode === 'INTERACTIVE_GRAPHIC' ? (
-        <div className="card-elevated rounded-3xl p-6 sm:p-7 border border-blue-100/80 bg-gradient-to-b from-white via-blue-50/20 to-white shadow-xl flex flex-col justify-between relative overflow-hidden">
+        <div className="card-elevated rounded-3xl p-5 sm:p-6 border border-blue-100/80 bg-gradient-to-b from-slate-50/50 via-white to-blue-50/30 shadow-xl relative overflow-hidden space-y-4">
           {/* Top Telemetry Pills */}
-          <div className="flex items-center justify-between gap-2 mb-5">
+          <div className="flex items-center justify-between gap-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs text-[#0A66C2] font-bold">
-              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-              10,000+ Executives Trained
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Verified Safe Activation
             </span>
             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black tracking-wide border border-emerald-200">
               Save ₹11,001 Today
             </span>
           </div>
 
-          {/* Hero Centerpiece: The Official LinkedIn Sales Navigator VIP Pass */}
-          <div className="rounded-2xl bg-gradient-to-br from-[#0A66C2] via-[#08529C] to-[#043366] text-white p-5 sm:p-6 shadow-xl shadow-blue-900/20 relative overflow-hidden mb-5">
-            {/* Ambient pattern */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+          {/* Hero Centerpiece: The Titanium Executive LinkedIn VIP Pass */}
+          <div className="rounded-2xl bg-gradient-to-br from-[#001D40] via-[#0A66C2] to-[#0D47A1] text-white p-5 sm:p-6 shadow-xl shadow-blue-900/30 relative overflow-hidden border border-white/20 transition-transform duration-300 hover:scale-[1.01]">
+            {/* Holographic light reflection */}
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/15 rounded-full blur-2xl pointer-events-none"></div>
 
-            <div className="flex items-start justify-between gap-3 mb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-white text-[#0A66C2] flex items-center justify-center font-black text-2xl shadow-md flex-shrink-0">
+            {/* Pass Header */}
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-white text-[#0A66C2] flex items-center justify-center font-black text-2xl shadow-md flex-shrink-0">
                   in
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-sky-200 font-bold">
-                      OFFICIAL 1-MONTH SEAT
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full bg-[#D4FF00] text-black font-black text-[10px] uppercase shadow-sm">
-                      FREE BONUS
-                    </span>
-                  </div>
-                  <h4 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-tight">
-                    LinkedIn Sales Navigator Advanced
-                  </h4>
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-sky-200 font-bold block">
+                    SPONSORED EXECUTIVE SEAT
+                  </span>
+                  <span className="text-xs font-mono text-emerald-300 font-bold flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    ALLOCATION READY
+                  </span>
                 </div>
               </div>
+
+              <span className="px-2.5 py-1 rounded-full bg-[#D4FF00] text-black font-black text-[10px] uppercase shadow-sm font-mono">
+                FREE BONUS • WORTH ₹15,000
+              </span>
             </div>
 
-            {/* Price & Security Spec Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 py-3 border-t border-white/15 border-b text-xs mb-3">
-              <div>
-                <span className="text-sky-200 block text-[10px] uppercase font-mono">Retail Value:</span>
-                <span className="font-bold text-white/80 line-through decoration-red-400 font-mono text-sm">
-                  ₹15,000 ($159.99)
+            {/* Product Title */}
+            <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4">
+              LinkedIn Sales Navigator Advanced
+            </h4>
+
+            {/* Spec Badges Grid */}
+            <div className="grid grid-cols-3 gap-2 pt-3 border-t border-white/20 text-xs">
+              <div className="p-2 rounded-lg bg-white/10 backdrop-blur-xs">
+                <span className="text-sky-200 block text-[9px] uppercase font-mono">Official Retail:</span>
+                <span className="font-bold text-white/70 line-through decoration-red-400 font-mono text-xs sm:text-sm">
+                  ₹15,000
                 </span>
               </div>
-              <div>
-                <span className="text-sky-200 block text-[10px] uppercase font-mono">Your Price:</span>
-                <span className="font-black text-[#D4FF00] font-mono text-base">
+              <div className="p-2 rounded-lg bg-white/10 backdrop-blur-xs">
+                <span className="text-sky-200 block text-[9px] uppercase font-mono">Your Price:</span>
+                <span className="font-black text-[#D4FF00] font-mono text-xs sm:text-sm">
                   ₹0 (FREE)
                 </span>
               </div>
-              <div className="col-span-2 sm:col-span-1">
-                <span className="text-sky-200 block text-[10px] uppercase font-mono">Security:</span>
-                <span className="font-bold text-emerald-300 flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-emerald-300" /> No Password
+              <div className="p-2 rounded-lg bg-white/10 backdrop-blur-xs">
+                <span className="text-sky-200 block text-[9px] uppercase font-mono">Security:</span>
+                <span className="font-bold text-emerald-300 font-mono text-xs sm:text-sm flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5" /> No Password
                 </span>
               </div>
             </div>
-
-            <p className="text-xs text-sky-100/90 leading-relaxed">
-              Activated directly on your own personal LinkedIn account by our team via official invitation link.
-            </p>
           </div>
 
-          {/* Included Playbooks */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-            <div className="rounded-xl bg-white border border-gray-200 p-4 shadow-sm hover:border-[#0A66C2]/40 transition-colors">
-              <span className="text-[10px] font-mono text-[#0A66C2] font-bold uppercase tracking-wider block mb-1">
-                RESOURCE 01 • MASTER GUIDE
-              </span>
-              <h5 className="text-sm font-bold text-gray-900 leading-snug">
-                LinkedIn Growth Foundation Playbook
+          {/* Visual Digital Assets (2 Tangible Dossiers / Books) */}
+          <div className="grid grid-cols-2 gap-3">
+            {/* Dossier 1 */}
+            <div className="rounded-2xl p-4 bg-gradient-to-br from-[#1E1B4B] via-[#2E1065] to-[#1E1B4B] text-white border border-indigo-400/30 shadow-md relative overflow-hidden group hover:-translate-y-0.5 transition-transform">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[9px] font-mono uppercase tracking-widest text-indigo-300 font-bold">
+                  MASTER GUIDE
+                </span>
+                <span className="px-1.5 py-0.5 rounded bg-indigo-500/40 text-indigo-200 text-[9px] font-mono font-bold">
+                  2026 RELEASE
+                </span>
+              </div>
+              <h5 className="text-sm font-black text-white leading-tight mb-1">
+                CLIC™ LinkedIn Playbook
               </h5>
-              <p className="text-xs text-gray-500 mt-1">
-                Profile promise, content system & relationship frameworks by Coach Ravikant.
-              </p>
+              <span className="text-[11px] text-indigo-200/80 font-medium block">
+                By Coach Ravikant
+              </span>
             </div>
 
-            <div className="rounded-xl bg-white border border-gray-200 p-4 shadow-sm hover:border-emerald-400 transition-colors">
-              <span className="text-[10px] font-mono text-emerald-700 font-bold uppercase tracking-wider block mb-1">
-                RESOURCE 02 • WORKBOOK
-              </span>
-              <h5 className="text-sm font-bold text-gray-900 leading-snug">
-                7-Day Sales Navigator Sprint
+            {/* Dossier 2 */}
+            <div className="rounded-2xl p-4 bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#047857] text-white border border-emerald-400/30 shadow-md relative overflow-hidden group hover:-translate-y-0.5 transition-transform">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[9px] font-mono uppercase tracking-widest text-emerald-300 font-bold">
+                  ACTION WORKBOOK
+                </span>
+                <span className="px-1.5 py-0.5 rounded bg-emerald-500/40 text-emerald-200 text-[9px] font-mono font-bold">
+                  7-DAY SPRINT
+                </span>
+              </div>
+              <h5 className="text-sm font-black text-white leading-tight mb-1">
+                Sales Nav Accelerator
               </h5>
-              <p className="text-xs text-gray-500 mt-1">
-                Ideal buyer filters, 10-lead shortlist & repeatable 30m daily habit.
-              </p>
+              <span className="text-[11px] text-emerald-200/80 font-medium block">
+                Daily Habit & Search Blueprint
+              </span>
             </div>
           </div>
 
-          {/* Bottom Action Footer */}
-          <div className="pt-3 border-t border-gray-200 flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5 text-gray-500">
+          {/* Bottom Visual Action Bar */}
+          <div className="pt-2 flex items-center justify-between text-xs">
+            <span className="flex items-center gap-1.5 text-gray-500 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <span>Official License • Instant Download</span>
             </span>
             <button
               onClick={onOpenCheckout}
-              className="text-[#0A66C2] font-bold hover:underline flex items-center gap-1 text-xs sm:text-sm"
+              className="text-[#0A66C2] font-bold hover:underline flex items-center gap-1 text-xs sm:text-sm cursor-pointer"
             >
               <span>Claim Bundle for ₹3,999</span>
               <ChevronRight className="w-4 h-4" />
