@@ -83,8 +83,8 @@ export function App() {
 
               {/* H1 Headline — Clean, punchy 2 lines, zero awkward wrap */}
               <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[46px] font-black text-gray-900 tracking-tight leading-[1.14]">
-                Turn LinkedIn Into A <br className="hidden sm:inline" />
-                <span className="text-[#0A66C2]">High-Value Client Engine.</span>
+                Turn LinkedIn Into a <br className="hidden sm:inline" />
+                <span className="text-[#0A66C2]">High-Value Lead Generation System.</span>
               </h1>
 
               {/* Subheadline — Direct Value Hook */}
