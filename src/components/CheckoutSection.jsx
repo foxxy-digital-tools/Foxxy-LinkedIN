@@ -136,7 +136,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
   };
 
   return (
-    <div id="checkout" className={`${isModal ? '' : 'py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-5xl mx-auto'}`}>
+    <div id="checkout" className={`${isModal ? '' : 'py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto'}`}>
       {!isModal && (
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
@@ -198,7 +198,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
               <button
                 type="button"
                 onClick={() => setShowMobileBreakdown(!showMobileBreakdown)}
-                className="w-full pt-2 border-t border-blue-100 flex items-center justify-between text-[11px] font-bold text-[#0A66C2] hover:underline"
+                className="w-full pt-2 border-t border-blue-100 flex items-center justify-between text-[11px] font-bold text-[#0A66C2] hover:underline min-h-[44px]"
               >
                 <span>{showMobileBreakdown ? 'Hide price breakdown ▲' : 'View full itemized breakdown (₹22,998 value) ▼'}</span>
               </button>
@@ -262,7 +262,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="e.g. Vikramaditya Sharma"
-                  className={`w-full px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                  className={`w-full min-h-[48px] px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
                     errors.fullName ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
@@ -282,7 +282,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                   <span className="text-[10px] text-gray-400 font-mono">10-Digit Mobile</span>
                 </div>
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm sm:text-xs font-mono font-medium">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-mono font-medium">
                     +91
                   </span>
                   <input
@@ -293,7 +293,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="9876543210"
-                    className={`w-full pl-12 pr-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                    className={`w-full min-h-[48px] pl-12 pr-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
                     errors.phone ? 'border-red-400' : 'border-gray-200'
                   }`}
                   />
@@ -320,7 +320,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="name@company.com or personal@gmail.com"
-                  className={`w-full px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                  className={`w-full min-h-[48px] px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
                     errors.email ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
@@ -345,7 +345,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                   value={formData.profileUrl}
                   onChange={handleChange}
                   placeholder="https://www.linkedin.com/in/yourname"
-                  className={`w-full px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
+                  className={`w-full min-h-[48px] px-4 py-3 rounded-xl bg-white border text-gray-900 placeholder-gray-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#0A66C2] transition-all ${
                     errors.profileUrl ? 'border-red-400' : 'border-gray-200'
                   }`}
                 />
@@ -371,7 +371,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
               <button
                 type="submit"
                 disabled={isProcessing}
-                className="w-full py-4 px-6 rounded-2xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-base shadow-md transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60"
+                className="w-full min-h-[48px] py-4 px-6 rounded-2xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-base shadow-md transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-60"
               >
                 {isProcessing ? (
                   <>

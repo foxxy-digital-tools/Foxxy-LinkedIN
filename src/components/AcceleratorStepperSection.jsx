@@ -53,30 +53,30 @@ export function AcceleratorStepperSection({ onOpenCheckout }) {
   ];
 
   return (
-    <section className="py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
+    <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
       {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-14">
+      <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
           <Compass className="w-3.5 h-3.5" />
           <span>7-DAY IMPLEMENTATION WORKBOOK</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
           Sales Navigator Accelerator Sprint
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-gray-500 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-500 leading-relaxed">
           The companion workbook to your free 1-month Sales Navigator Advanced seat. A step-by-step 7-day sprint from blank software to a repeatable lead engine.
         </p>
       </div>
 
       {/* Stepper Container */}
-      <div className="card-elevated rounded-2xl p-5 sm:p-8">
+      <div className="card-elevated rounded-2xl p-4 sm:p-8">
         {/* Step Tabs with touch scroll */}
         <div className="flex items-center gap-2 overflow-x-auto pb-3 sm:pb-4 mb-6 sm:mb-8 border-b border-gray-200 no-scrollbar -mx-1 px-1">
           {daysData.map((day, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}
-              className={`flex-shrink-0 flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`flex-shrink-0 min-h-[44px] flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeTab === idx
                   ? 'bg-[#0A66C2] text-white shadow-sm'
                   : 'bg-gray-50 border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100'
@@ -126,7 +126,7 @@ export function AcceleratorStepperSection({ onOpenCheckout }) {
               </span>
               <button
                 onClick={onOpenCheckout}
-                className="self-start sm:self-auto text-xs font-bold text-[#0A66C2] hover:underline flex items-center gap-1 cursor-pointer"
+                className="self-start sm:self-auto text-xs font-bold text-[#0A66C2] hover:underline flex items-center gap-1 cursor-pointer min-h-[44px] py-2"
               >
                 <span>Claim Toolkit to Access</span>
                 <ArrowRight className="w-3.5 h-3.5" />

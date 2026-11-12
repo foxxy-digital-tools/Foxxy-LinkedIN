@@ -64,21 +64,21 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
           </div>
 
           {/* Hero Centerpiece: The Titanium Executive LinkedIn VIP Pass */}
-          <div className="rounded-2xl bg-gradient-to-br from-[#001D40] via-[#0A66C2] to-[#0D47A1] text-white p-5 sm:p-6 shadow-xl shadow-blue-900/30 relative overflow-hidden border border-white/20 transition-transform duration-300 hover:scale-[1.01]">
+          <div className="rounded-2xl bg-gradient-to-br from-[#001D40] via-[#0A66C2] to-[#0D47A1] text-white p-4 sm:p-6 shadow-xl shadow-blue-900/30 relative overflow-hidden border border-white/20 transition-transform duration-300 hover:scale-[1.01]">
             {/* Holographic light reflection */}
-            <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/15 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-36 h-36 bg-white/15 rounded-full blur-2xl pointer-events-none"></div>
 
             {/* Pass Header */}
-            <div className="flex items-center justify-between gap-2 sm:gap-3 mb-4">
+            <div className="flex items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
               <div className="flex items-center gap-2 sm:gap-2.5">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white text-[#0A66C2] flex items-center justify-center font-black text-xl sm:text-2xl shadow-md flex-shrink-0">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white text-[#0A66C2] flex items-center justify-center font-black text-lg sm:text-2xl shadow-md flex-shrink-0">
                   in
                 </div>
                 <div>
                   <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-widest text-sky-200 font-bold block">
                     SPONSORED EXECUTIVE SEAT
                   </span>
-                  <span className="text-[11px] sm:text-xs font-mono text-emerald-300 font-bold flex items-center gap-1">
+                  <span className="text-[10px] sm:text-xs font-mono text-emerald-300 font-bold flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                     ALLOCATION READY
                   </span>
@@ -86,19 +86,19 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
               </div>
 
               <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#D4FF00] text-black font-black text-[9px] sm:text-[10px] uppercase shadow-sm font-mono flex-shrink-0 whitespace-nowrap">
-                FREE BONUS • WORTH ₹15,000
+                FREE • WORTH ₹15,000
               </span>
             </div>
 
             {/* Product Title */}
-            <h4 className="text-lg sm:text-2xl font-black text-white tracking-tight mb-3 sm:mb-4">
+            <h4 className="text-base sm:text-2xl font-black text-white tracking-tight mb-2.5 sm:mb-4">
               LinkedIn Sales Navigator Advanced
             </h4>
 
             {/* Spec Badges Grid */}
-            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-3 border-t border-white/20 text-xs">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-2.5 sm:pt-3 border-t border-white/20 text-xs">
               <div className="p-1.5 sm:p-2 rounded-lg bg-white/10 backdrop-blur-xs text-center sm:text-left">
-                <span className="text-sky-200 block text-[8px] sm:text-[9px] uppercase font-mono">Official Retail:</span>
+                <span className="text-sky-200 block text-[8px] sm:text-[9px] uppercase font-mono">Retail:</span>
                 <span className="font-bold text-white/70 line-through decoration-red-400 font-mono text-xs sm:text-sm">
                   ₹15,000
                 </span>
@@ -111,7 +111,7 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
               </div>
               <div className="p-1.5 sm:p-2 rounded-lg bg-white/10 backdrop-blur-xs text-center sm:text-left">
                 <span className="text-sky-200 block text-[8px] sm:text-[9px] uppercase font-mono">Security:</span>
-                <span className="font-bold text-emerald-300 font-mono text-[11px] sm:text-sm flex items-center justify-center sm:justify-start gap-1">
+                <span className="font-bold text-emerald-300 font-mono text-[10px] sm:text-sm flex items-center justify-center sm:justify-start gap-0.5 sm:gap-1">
                   <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
                   <span>No Password</span>
                 </span>
@@ -120,53 +120,53 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
           </div>
 
           {/* Visual Digital Assets (2 Tangible Dossiers / Books) */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
             {/* Dossier 1 */}
-            <div className="rounded-2xl p-4 bg-gradient-to-br from-[#1E1B4B] via-[#2E1065] to-[#1E1B4B] text-white border border-indigo-400/30 shadow-md relative overflow-hidden group hover:-translate-y-0.5 transition-transform">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-indigo-300 font-bold">
+            <div className="rounded-2xl p-3 sm:p-4 bg-gradient-to-br from-[#1E1B4B] via-[#2E1065] to-[#1E1B4B] text-white border border-indigo-400/30 shadow-md relative overflow-hidden group hover:-translate-y-0.5 transition-transform">
+              <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-widest text-indigo-300 font-bold">
                   MASTER GUIDE
                 </span>
-                <span className="px-1.5 py-0.5 rounded bg-indigo-500/40 text-indigo-200 text-[9px] font-mono font-bold">
-                  2026 RELEASE
+                <span className="px-1.5 py-0.5 rounded bg-indigo-500/40 text-indigo-200 text-[8px] sm:text-[9px] font-mono font-bold">
+                  2026
                 </span>
               </div>
-              <h5 className="text-sm font-black text-white leading-tight mb-1">
-                CLIC™ LinkedIn Playbook
+              <h5 className="text-xs sm:text-sm font-black text-white leading-tight mb-1">
+                CLIC™ Playbook
               </h5>
-              <span className="text-[11px] text-indigo-200/80 font-medium block">
+              <span className="text-[10px] sm:text-[11px] text-indigo-200/80 font-medium block">
                 By Coach Ravikant
               </span>
             </div>
 
             {/* Dossier 2 */}
-            <div className="rounded-2xl p-4 bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#047857] text-white border border-emerald-400/30 shadow-md relative overflow-hidden group hover:-translate-y-0.5 transition-transform">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-emerald-300 font-bold">
-                  ACTION WORKBOOK
+            <div className="rounded-2xl p-3 sm:p-4 bg-gradient-to-br from-[#064E3B] via-[#065F46] to-[#047857] text-white border border-emerald-400/30 shadow-md relative overflow-hidden group hover:-translate-y-0.5 transition-transform">
+              <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-widest text-emerald-300 font-bold">
+                  WORKBOOK
                 </span>
-                <span className="px-1.5 py-0.5 rounded bg-emerald-500/40 text-emerald-200 text-[9px] font-mono font-bold">
+                <span className="px-1.5 py-0.5 rounded bg-emerald-500/40 text-emerald-200 text-[8px] sm:text-[9px] font-mono font-bold">
                   7-DAY SPRINT
                 </span>
               </div>
-              <h5 className="text-sm font-black text-white leading-tight mb-1">
+              <h5 className="text-xs sm:text-sm font-black text-white leading-tight mb-1">
                 Sales Nav Accelerator
               </h5>
-              <span className="text-[11px] text-emerald-200/80 font-medium block">
-                Daily Habit & Search Blueprint
+              <span className="text-[10px] sm:text-[11px] text-emerald-200/80 font-medium block">
+                Daily Blueprint
               </span>
             </div>
           </div>
 
           {/* Bottom Visual Action Bar */}
-          <div className="pt-2 flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5 text-gray-500 font-medium">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <span className="flex items-center gap-1.5 text-gray-500 font-medium text-[11px] sm:text-xs">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
               <span>Official License • Instant Download</span>
             </span>
             <button
               onClick={onOpenCheckout}
-              className="text-[#0A66C2] font-bold hover:underline flex items-center gap-1 text-xs sm:text-sm cursor-pointer"
+              className="text-[#0A66C2] font-bold hover:underline flex items-center gap-1 text-xs sm:text-sm cursor-pointer min-h-[44px] py-2"
             >
               <span>Claim Bundle for ₹3,999</span>
               <ChevronRight className="w-4 h-4" />

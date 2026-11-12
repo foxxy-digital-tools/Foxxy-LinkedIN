@@ -37,17 +37,17 @@ export function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-gray-100">
+    <section id="faq" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-gray-100">
       {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-14">
+      <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
           <HelpCircle className="w-3.5 h-3.5" />
           <span>FREQUENTLY ASKED QUESTIONS</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
           Got Questions? We've Got Answers.
         </h2>
-        <p className="mt-3 text-sm sm:text-base text-gray-500">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-500">
           Everything you need to know about the toolkit, the free Sales Navigator seat, and our zero-password policy.
         </p>
       </div>
@@ -67,9 +67,9 @@ export function FAQSection() {
             >
               <button
                 onClick={() => toggle(idx)}
-                className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none"
+                className="w-full text-left p-4 sm:p-6 min-h-[48px] flex items-center justify-between gap-3 sm:gap-4 focus:outline-none"
               >
-                <span className="text-sm sm:text-base font-bold text-gray-900 flex items-center gap-3">
+                <span className="text-sm sm:text-base font-bold text-gray-900 flex items-center gap-2.5 sm:gap-3">
                   <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-mono font-extrabold flex-shrink-0 ${
                     isOpen ? 'bg-[#0A66C2] text-white' : 'bg-gray-200 text-gray-600'
                   }`}>
@@ -83,7 +83,7 @@ export function FAQSection() {
               </button>
 
               {isOpen && (
-                <div className="px-5 sm:px-6 pb-6 pt-1 text-sm text-gray-600 leading-relaxed border-t border-gray-100">
+                <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100">
                   <p>{faq.a}</p>
                 </div>
               )}
@@ -93,14 +93,14 @@ export function FAQSection() {
       </div>
 
       {/* WhatsApp Help Banner */}
-      <div className="mt-10 p-5 rounded-2xl bg-gray-50 border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div className="mt-8 sm:mt-10 p-4 sm:p-5 rounded-2xl bg-gray-50 border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0">
             <MessageCircle className="w-4 h-4" />
           </div>
           <div>
             <span className="text-gray-900 font-semibold block">Have an unlisted question?</span>
-            <span className="text-gray-500">Chat with the Foxxy Digital Tools support desk directly.</span>
+            <span className="text-gray-500 text-[11px] sm:text-xs">Chat with the Foxxy Digital Tools support desk directly.</span>
           </div>
         </div>
 
@@ -108,7 +108,7 @@ export function FAQSection() {
           href={`https://wa.me/${APP_CONFIG.WHATSAPP_SUPPORT_NUMBER}?text=Hi%20Foxxy%20Team!%20I%20have%20a%20question%20about%20the%20LinkedIn%20Growth%20Toolkit%20and%20Sales%20Nav%20Bonus.`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold transition-all shadow-sm flex items-center gap-1.5"
+          className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
         >
           <span>Chat on WhatsApp</span>
         </a>

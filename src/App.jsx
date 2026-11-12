@@ -59,7 +59,7 @@ export function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex flex-col relative selection:bg-[#0A66C2] selection:text-white">
+    <div className="min-h-[100svh] bg-white text-gray-900 flex flex-col relative selection:bg-[#0A66C2] selection:text-white">
       {/* 1. Sticky Urgency Top Bar & Navbar */}
       <Navbar
         onOpenCheckout={() => setIsCheckoutModalOpen(true)}
@@ -68,7 +68,7 @@ export function App() {
 
       <main className="flex-1 relative z-10">
         {/* 2. Elevated Executive Hero Section (Direct-Response Mobile + Desktop Grid) */}
-        <section className="relative pt-6 pb-10 sm:pt-12 sm:pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dot-pattern">
+        <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dot-pattern">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
             {/* Left Column (Desktop) / Top Flow (Mobile) */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-6">
@@ -82,7 +82,7 @@ export function App() {
               </div>
 
               {/* H1 Headline — Clean, punchy 2 lines, zero awkward wrap */}
-              <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[46px] font-black text-gray-900 tracking-tight leading-[1.14]">
+              <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-gray-900 tracking-tight leading-tight">
                 Turn LinkedIn Into a <br className="hidden sm:inline" />
                 <span className="text-[#0A66C2]">High-Value Lead Generation System.</span>
               </h1>
@@ -102,13 +102,13 @@ export function App() {
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3">
                   <button
                     onClick={() => setIsCheckoutModalOpen(true)}
-                    className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-sm sm:text-base tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.99]"
+                    className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap min-h-[48px] px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-extrabold text-sm sm:text-base tracking-tight shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.99]"
                   >
                     <span>Claim Toolkit + Free 1-Month Seat</span>
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
 
-                  <div className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl bg-gray-50 border border-gray-200 text-xs font-mono">
+                  <div className="w-full sm:w-auto inline-flex items-center justify-center min-h-[48px] gap-2 px-4 py-2.5 sm:py-3 rounded-xl bg-gray-50 border border-gray-200 text-xs font-mono">
                     <span className="text-gray-400 line-through">₹15,000</span>
                     <span className="text-base font-black text-[#0A66C2]">₹3,999</span>
                     <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full">
@@ -167,12 +167,12 @@ export function App() {
       </main>
 
       {/* 10. Footer Section with bottom padding for mobile sticky bar */}
-      <div className="pb-20 md:pb-0">
+      <div className="pb-24 md:pb-0">
         <FooterSection />
       </div>
 
       {/* High-Converting Sticky Bottom Bar for Mobile Viewports (md:hidden) with iOS Safe-Area */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 pb-[max(10px,env(safe-area-inset-bottom))] flex items-center justify-between shadow-2xl animate-fadeIn">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 pb-[max(12px,env(safe-area-inset-bottom))] flex items-center justify-between shadow-2xl animate-fadeIn">
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">
             <span className="text-sm font-black text-[#0A66C2] font-mono">₹3,999</span>
@@ -186,7 +186,7 @@ export function App() {
 
         <button
           onClick={() => setIsCheckoutModalOpen(true)}
-          className="flex-shrink-0 whitespace-nowrap px-4 py-2 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5 cursor-pointer active:scale-95"
+          className="flex-shrink-0 whitespace-nowrap min-h-[44px] px-4 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
         >
           <span>Claim Free Seat</span>
           <ArrowRight className="w-3.5 h-3.5" />

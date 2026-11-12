@@ -31,7 +31,7 @@ export function MotionGraphicArbitrage() {
   }, [totalSavings]);
 
   return (
-    <div className="card-elevated rounded-2xl p-6 lg:p-8">
+    <div className="card-elevated rounded-2xl p-4 sm:p-6 lg:p-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-5 border-b border-gray-200">
         <div>
@@ -48,7 +48,7 @@ export function MotionGraphicArbitrage() {
       {/* Two-Column Comparison */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
         {/* Option A */}
-        <div className="rounded-xl p-5 bg-red-50/60 border border-red-200 flex flex-col justify-between">
+        <div className="rounded-xl p-4 sm:p-5 bg-red-50/60 border border-red-200 flex flex-col justify-between">
           <div className="absolute-tag">
             <span className="inline-block px-3 py-1 bg-red-100 text-red-600 text-[10px] font-mono uppercase font-bold tracking-wider rounded-md mb-3">
               Direct LinkedIn Billing
@@ -75,7 +75,7 @@ export function MotionGraphicArbitrage() {
         </div>
 
         {/* Option B */}
-        <div className="rounded-xl p-5 bg-white border-2 border-[#0A66C2] flex flex-col justify-between shadow-md">
+        <div className="rounded-xl p-4 sm:p-5 bg-white border-2 border-[#0A66C2] flex flex-col justify-between shadow-md">
           <div>
             <span className="inline-block px-3 py-1 bg-[#0A66C2] text-white text-[10px] font-mono uppercase font-bold tracking-wider rounded-md mb-3">
               CR Academy Toolkit Bundle
@@ -94,7 +94,7 @@ export function MotionGraphicArbitrage() {
 
           <div className="space-y-2.5 pt-3 border-t border-blue-100 text-sm text-gray-700">
             {/* Highlighted VIP Attraction */}
-            <div className="p-2.5 -mx-1 rounded-xl bg-gradient-to-r from-blue-50 via-sky-50 to-blue-50/60 border border-blue-200 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 shadow-sm">
+            <div className="p-2.5 rounded-xl bg-gradient-to-r from-blue-50 via-sky-50 to-blue-50/60 border border-blue-200 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 shadow-sm">
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 rounded-full bg-[#0A66C2] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
                   <Check className="w-3.5 h-3.5 stroke-[3]" />

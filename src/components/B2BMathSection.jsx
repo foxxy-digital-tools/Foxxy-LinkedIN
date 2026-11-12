@@ -109,28 +109,28 @@ export function B2BMathSection({ onOpenCheckout }) {
   ];
 
   return (
-    <section id="the-math" className="py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="the-math" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
+      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
           <Sparkles className="w-3.5 h-3.5" />
           <span>THE B2B VALUE EQUATION</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
           Why Pay ₹15,000 for Blank Software When You Can Get The <span className="text-[#0A66C2]">Software FREE + The System</span> for ₹3,999?
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-gray-500 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-500 leading-relaxed">
           Most professionals pay $159.99/mo directly to LinkedIn without a framework. Here is how our bundle compares to buying software alone.
         </p>
       </div>
 
       {/* Interactive Savings Component */}
-      <div className="mb-12">
+      <div className="mb-10 sm:mb-12">
         <MotionGraphicArbitrage />
       </div>
 
       {/* Interactive ROI Calculator Widget */}
-      <div className="relative overflow-hidden rounded-2xl p-5 sm:p-8 bg-gradient-to-br from-blue-50/90 via-white to-emerald-50/80 border-2 border-[#0A66C2]/30 ring-4 ring-blue-100/50 shadow-[0_16px_40px_-12px_rgba(10,102,194,0.22)] mb-12">
+      <div className="relative overflow-hidden rounded-2xl p-4 sm:p-8 bg-gradient-to-br from-blue-50/90 via-white to-emerald-50/80 border-2 border-[#0A66C2]/30 ring-4 ring-blue-100/50 shadow-[0_16px_40px_-12px_rgba(10,102,194,0.22)] mb-10 sm:mb-12">
         {/* Top Accent Bar */}
         <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#0A66C2] via-sky-500 to-emerald-500" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-1">
@@ -152,7 +152,7 @@ export function B2BMathSection({ onOpenCheckout }) {
                 <button
                   key={deal.value}
                   onClick={() => setSelectedDealSize(deal.value)}
-                  className={`px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center cursor-pointer ${
+                  className={`min-h-[44px] flex items-center justify-center px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center cursor-pointer ${
                     selectedDealSize === deal.value
                       ? 'bg-[#0A66C2] text-white shadow-md ring-2 ring-[#0A66C2]/25'
                       : 'bg-white border border-gray-300 text-gray-700 hover:bg-blue-50/60 hover:border-blue-300'
@@ -165,7 +165,7 @@ export function B2BMathSection({ onOpenCheckout }) {
           </div>
 
           {/* Dynamic ROI Result Box */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-50/90 to-white border-2 border-emerald-400 shadow-[0_10px_25px_-6px_rgba(16,185,129,0.28)] flex-shrink-0 text-center w-full md:w-auto md:min-w-[240px]">
+          <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-emerald-50/90 to-white border-2 border-emerald-400 shadow-[0_10px_25px_-6px_rgba(16,185,129,0.28)] flex-shrink-0 text-center w-full md:w-auto md:min-w-[240px]">
             <span className="text-xs font-mono font-semibold text-emerald-800/80 uppercase block mb-1">
               Projected ROI on ₹3,999:
             </span>
@@ -182,7 +182,7 @@ export function B2BMathSection({ onOpenCheckout }) {
       {/* Side-by-Side Comparison: Desktop Table + Dedicated Mobile Cards */}
       <div className="card-elevated rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
         {/* Table / Card Header */}
-        <div className="p-5 sm:p-6 border-b border-gray-200 bg-gray-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-4 sm:p-6 border-b border-gray-200 bg-gray-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h3 className="text-lg sm:text-xl font-bold text-gray-900">
               Detailed Feature-by-Feature Comparison
@@ -193,7 +193,7 @@ export function B2BMathSection({ onOpenCheckout }) {
           </div>
           <button
             onClick={onOpenCheckout}
-            className="self-stretch sm:self-auto flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+            className="self-stretch sm:self-auto flex-shrink-0 whitespace-nowrap min-h-[44px] px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <span>Lock In ₹3,999 Bundle</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -526,7 +526,7 @@ export function B2BMathSection({ onOpenCheckout }) {
             </div>
             <button
               onClick={onOpenCheckout}
-              className="flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+              className="flex-shrink-0 whitespace-nowrap min-h-[44px] px-5 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center justify-center"
             >
               Claim for ₹3,999 →
             </button>
