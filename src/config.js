@@ -3,7 +3,7 @@ export const APP_CONFIG = {
   // Razorpay API Key. Pulls from Vercel / .env.local via Vite (VITE_RAZORPAY_KEY_ID)
   // Falls back to your test key if .env is unset.
   RAZORPAY_KEY_ID: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_TQ78ZwFX9rTUuv",
-  API_BASE_URL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api/v1",
+  API_BASE_URL: import.meta.env.VITE_API_BASE_URL || "https://admin.foxxydigitaltools.com/api/v1",
   AMOUNT_IN_PAISE: 399900, // ₹3,999.00
   PRICE_FORMATTED: "₹3,999",
   ORIGINAL_PRICE_FORMATTED: "₹15,000",
