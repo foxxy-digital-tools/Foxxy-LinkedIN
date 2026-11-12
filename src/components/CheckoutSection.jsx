@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Lock, AlertCircle, ArrowRight, Sparkles, CreditCard, Check, Loader2 } from 'lucide-react';
 import { APP_CONFIG } from '../config';
+import { createLead, updateLeadPayment } from '../services/leadService';
 
 export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModal }) {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
   const [isProcessing, setIsProcessing] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [showMobileBreakdown, setShowMobileBreakdown] = useState(false);
+  const [currentLeadId, setCurrentLeadId] = useState(null);
 
   const validate = () => {
     const newErrors = {};
@@ -52,11 +54,25 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
     }
   };
 
-  const handleInitiatePayment = (e) => {
+  const handleInitiatePayment = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsProcessing(true);
+
+    // 1. Immediately capture lead in Foxxy Admin backend database
+    let serverLeadId = currentLeadId;
+    let serverOrderId = null;
+    try {
+      const leadResult = await createLead(formData);
+      if (leadResult && leadResult.lead_id) {
+        serverLeadId = leadResult.lead_id;
+        serverOrderId = leadResult.order_id;
+        setCurrentLeadId(leadResult.lead_id);
+      }
+    } catch (apiErr) {
+      console.warn("Backend lead pre-capture warning:", apiErr);
+    }
 
     const isPlaceholderKey = !APP_CONFIG.RAZORPAY_KEY_ID ||
       APP_CONFIG.RAZORPAY_KEY_ID.includes('YOUR_KEY_HERE') ||
@@ -84,12 +100,24 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
             offer: "CLIC_Toolkit_Plus_1Mo_SalesNav_Adv"
           },
           theme: { color: "#0A66C2" },
-          handler: function (response) {
+          handler: async function (response) {
             setIsProcessing(false);
             if (onCloseModal) onCloseModal();
+
+            // 2. Mark lead as completed in Foxxy Admin backend
+            const activeLeadId = serverLeadId || currentLeadId;
+            if (activeLeadId) {
+              await updateLeadPayment(activeLeadId, {
+                payment_id: response.razorpay_payment_id,
+                order_id: response.razorpay_order_id || serverOrderId,
+                signature: response.razorpay_signature,
+                status: 'completed'
+              });
+            }
+
             onPaymentSuccess({
               paymentId: response.razorpay_payment_id || `pay_${Date.now()}`,
-              orderId: response.razorpay_order_id || `order_${Date.now()}`,
+              orderId: response.razorpay_order_id || serverOrderId || `order_${Date.now()}`,
               signature: response.razorpay_signature || '',
               customer: { ...formData },
               amount: APP_CONFIG.PRICE_FORMATTED,
@@ -100,6 +128,10 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
             ondismiss: function () { setIsProcessing(false); }
           }
         };
+
+        if (serverOrderId && serverOrderId.startsWith('order_')) {
+          options.order_id = serverOrderId;
+        }
 
         const rzp = new window.Razorpay(options);
         rzp.on('payment.failed', function (resp) {
@@ -120,13 +152,24 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
     }, 500);
   };
 
-  const handleSimulatePaymentSuccess = () => {
+  const handleSimulatePaymentSuccess = async () => {
     setIsDemoModalOpen(false);
     if (onCloseModal) onCloseModal();
     const demoPaymentId = `pay_demo_${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
+    const demoOrderId = `ord_demo_${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+
+    if (currentLeadId) {
+      await updateLeadPayment(currentLeadId, {
+        payment_id: demoPaymentId,
+        order_id: demoOrderId,
+        signature: "demo_sig_2026",
+        status: 'completed'
+      });
+    }
+
     onPaymentSuccess({
       paymentId: demoPaymentId,
-      orderId: `ord_demo_${Math.random().toString(36).substring(2, 8).toUpperCase()}`,
+      orderId: demoOrderId,
       signature: "demo_sig_2026",
       customer: { ...formData },
       amount: APP_CONFIG.PRICE_FORMATTED,
