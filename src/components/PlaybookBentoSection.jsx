@@ -55,23 +55,47 @@ export function PlaybookBentoSection({ onOpenCheckout }) {
   ];
 
   return (
-    <section id="whats-inside" className="py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="whats-inside" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-14">
+      <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
           <BookOpen className="w-3.5 h-3.5" />
           <span>THE LINKEDIN GROWTH PLAYBOOK</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
           A Complete System — Not Just Software
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-gray-500 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-500 leading-relaxed">
           Created by Coach Ravikant and used by 10,000+ professionals. The playbook covers everything you need to turn LinkedIn into a repeatable source of qualified B2B conversations.
         </p>
       </div>
 
-      {/* 6-Card Outcome Grid — No leaked content, just outcomes */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      {/* 1. DEDICATED MOBILE VIEW (block md:hidden): Clean Outcome Cards */}
+      <div className="block md:hidden mb-8 space-y-3.5">
+        {highlights.map((item, idx) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={idx}
+              className="rounded-2xl card-elevated p-4 flex items-start gap-3.5"
+            >
+              <div className={`w-10 h-10 rounded-xl ${item.bg} ${item.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                <Icon className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-1 mb-1">
+                  <h3 className="text-sm font-bold text-gray-900 truncate">{item.title}</h3>
+                  <span className="text-[10px] font-mono text-gray-400 font-bold">0{idx + 1}</span>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* 2. PROTECTED DESKTOP VIEW (hidden md:grid): Preserved Exact 3-Column Bento */}
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {highlights.map((item, idx) => {
           const Icon = item.icon;
           return (
@@ -92,9 +116,9 @@ export function PlaybookBentoSection({ onOpenCheckout }) {
       </div>
 
       {/* Also includes AI prompts teaser */}
-      <div className="rounded-2xl bg-gray-50 border border-gray-200 p-5 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6">
+      <div className="rounded-2xl bg-gray-50 border border-gray-200 p-4 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
         <div className="flex items-start sm:items-center gap-3.5 sm:gap-4">
-          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#0A66C2] flex items-center justify-center text-white shadow-sm flex-shrink-0 mt-0.5 sm:mt-0">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#0A66C2] flex items-center justify-center text-white shadow-sm flex-shrink-0 mt-0.5 sm:mt-0">
             <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
@@ -109,7 +133,7 @@ export function PlaybookBentoSection({ onOpenCheckout }) {
 
         <button
           onClick={onOpenCheckout}
-          className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full sm:w-auto flex-shrink-0 whitespace-nowrap min-h-[48px] px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>Get Playbook + Free 1-Month Seat</span>
           <ArrowRight className="w-4 h-4 flex-shrink-0" />

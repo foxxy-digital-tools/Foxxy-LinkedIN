@@ -39,23 +39,49 @@ export function ActivationFlowSection({ onOpenCheckout }) {
   ];
 
   return (
-    <section id="activation" className="py-10 sm:py-20 px-3.5 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
+    <section id="activation" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
+      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono font-semibold mb-3">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
           <span>ZERO-PASSWORD SECURITY GUARANTEE</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
           How Your <span className="text-[#0A66C2]">Free ₹15,000 Seat</span> Is Activated
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-gray-500 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-500 leading-relaxed">
           Transparent, official, and team-assisted. We never ask for your LinkedIn login credentials or sensitive passwords under any circumstances.
         </p>
       </div>
 
-      {/* 4-Step Visual Grid (Clean, cohesive cards with zero awkward empty spaces) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+      {/* 1. DEDICATED MOBILE VIEW (block md:hidden): Clean Sequential Flow */}
+      <div className="block md:hidden mb-8 space-y-3.5">
+        {steps.map((st) => {
+          const Icon = st.icon;
+          return (
+            <div
+              key={st.num}
+              className="card-elevated rounded-2xl p-4 flex flex-col justify-between"
+            >
+              <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#0A66C2] font-mono font-extrabold text-xs">
+                    {st.num}
+                  </span>
+                  <span className="text-xs font-bold text-gray-800">{st.title}</span>
+                </div>
+                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                  {st.tag}
+                </span>
+              </div>
+              <p className="text-xs text-gray-600 leading-relaxed">{st.description}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* 2. PROTECTED DESKTOP VIEW (hidden md:grid): Preserved Exact 4-Column Grid */}
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
         {steps.map((st) => {
           const Icon = st.icon;
           return (
@@ -112,9 +138,9 @@ export function ActivationFlowSection({ onOpenCheckout }) {
       </div>
 
       {/* Security Callout Box */}
-      <div className="rounded-2xl bg-gradient-to-r from-blue-50 via-sky-50 to-emerald-50 border border-emerald-300 p-5 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 shadow-sm">
+      <div className="rounded-2xl bg-gradient-to-r from-blue-50 via-sky-50 to-emerald-50 border border-emerald-300 p-4 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-sm">
         <div className="flex items-start gap-3.5 sm:gap-4">
-          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 flex-shrink-0 shadow-sm mt-0.5 sm:mt-0">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 flex-shrink-0 shadow-sm mt-0.5 sm:mt-0">
             <Lock className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
@@ -132,7 +158,7 @@ export function ActivationFlowSection({ onOpenCheckout }) {
 
         <button
           onClick={onOpenCheckout}
-          className="w-full md:w-auto flex-shrink-0 whitespace-nowrap px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full md:w-auto flex-shrink-0 whitespace-nowrap min-h-[48px] px-5 sm:px-6 py-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>Claim Free Seat for ₹3,999</span>
           <ArrowRight className="w-4 h-4 flex-shrink-0" />
