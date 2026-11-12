@@ -130,10 +130,12 @@ export function B2BMathSection({ onOpenCheckout }) {
       </div>
 
       {/* Interactive ROI Calculator Widget */}
-      <div className="card-elevated rounded-2xl p-5 sm:p-8 bg-gradient-to-r from-blue-50/50 via-white to-emerald-50/50 border border-blue-200 mb-12">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="relative overflow-hidden rounded-2xl p-5 sm:p-8 bg-gradient-to-br from-blue-50/90 via-white to-emerald-50/80 border-2 border-[#0A66C2]/30 ring-4 ring-blue-100/50 shadow-[0_16px_40px_-12px_rgba(10,102,194,0.22)] mb-12">
+        {/* Top Accent Bar */}
+        <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#0A66C2] via-sky-500 to-emerald-500" />
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-1">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-mono font-bold shadow-xs">
               <Calculator className="w-3.5 h-3.5" />
               INTERACTIVE PIPELINE CALCULATOR
             </div>
@@ -150,10 +152,10 @@ export function B2BMathSection({ onOpenCheckout }) {
                 <button
                   key={deal.value}
                   onClick={() => setSelectedDealSize(deal.value)}
-                  className={`px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center ${
+                  className={`px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center cursor-pointer ${
                     selectedDealSize === deal.value
-                      ? 'bg-[#0A66C2] text-white shadow-md'
-                      : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                      ? 'bg-[#0A66C2] text-white shadow-md ring-2 ring-[#0A66C2]/25'
+                      : 'bg-white border border-gray-300 text-gray-700 hover:bg-blue-50/60 hover:border-blue-300'
                   }`}
                 >
                   {deal.label}
@@ -163,14 +165,14 @@ export function B2BMathSection({ onOpenCheckout }) {
           </div>
 
           {/* Dynamic ROI Result Box */}
-          <div className="p-5 rounded-2xl bg-white border-2 border-emerald-300 shadow-md flex-shrink-0 text-center w-full md:w-auto md:min-w-[240px]">
-            <span className="text-xs font-mono text-gray-500 uppercase block mb-1">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-50/90 to-white border-2 border-emerald-400 shadow-[0_10px_25px_-6px_rgba(16,185,129,0.28)] flex-shrink-0 text-center w-full md:w-auto md:min-w-[240px]">
+            <span className="text-xs font-mono font-semibold text-emerald-800/80 uppercase block mb-1">
               Projected ROI on ₹3,999:
             </span>
             <div className="text-3xl sm:text-4xl font-black text-emerald-600 font-mono">
               +{calculatedRoi.toLocaleString('en-IN')}%
             </div>
-            <span className="text-[11px] text-gray-500 block mt-1">
+            <span className="text-[11px] text-gray-600 font-medium block mt-1">
               (₹{selectedDealSize.toLocaleString('en-IN')} deal vs. ₹3,999 cost)
             </span>
           </div>
