@@ -250,7 +250,7 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
           }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn"
         >
-          <div className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl border border-gray-200 p-6 shadow-2xl relative">
+          <div className="w-full max-w-2xl max-h-[85vh] overflow-y-auto no-scrollbar bg-white rounded-2xl border border-gray-200 p-6 shadow-2xl relative">
             <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
               <div>
                 <span className="text-xs font-mono text-[#0A66C2] uppercase tracking-wider font-semibold">TRANSCRIPT</span>
