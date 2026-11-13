@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Play, Sparkles, ShieldCheck, ChevronRight, FileText, X, CheckCircle, ArrowRight, Zap, Gift } from 'lucide-react';
 import { APP_CONFIG, VSL_TRANSCRIPT } from '../config';
 
@@ -7,6 +7,8 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
   const [activeChapter, setActiveChapter] = useState(0);
+
+  const transcriptBackdropMouseDownRef = useRef(false);
 
   const chapters = [
     { title: "0:00 The Math", time: "0:00", description: "Why software alone fails & the cost reality" },
@@ -239,7 +241,13 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
       {/* Transcript Modal */}
       {showTranscript && (
         <div
-          onClick={(e) => { if (e.target === e.currentTarget) setShowTranscript(false); }}
+          onMouseDown={(e) => { transcriptBackdropMouseDownRef.current = (e.target === e.currentTarget); }}
+          onMouseUp={(e) => {
+            if (transcriptBackdropMouseDownRef.current && e.target === e.currentTarget) {
+              setShowTranscript(false);
+            }
+            transcriptBackdropMouseDownRef.current = false;
+          }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn"
         >
           <div className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl border border-gray-200 p-6 shadow-2xl relative">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, ShieldCheck, Lock, AlertCircle, ArrowRight, Check, Loader2, Sparkles, CreditCard } from 'lucide-react';
 import { APP_CONFIG } from '../config';
 import { createLead, updateLeadPayment } from '../services/leadService';
@@ -14,6 +14,20 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [currentLeadId, setCurrentLeadId] = useState(null);
+
+  // Track mousedown target to prevent dragging text selection outside modal from closing it
+  const backdropMouseDownRef = useRef(false);
+
+  const handleBackdropMouseDown = (e) => {
+    backdropMouseDownRef.current = (e.target === e.currentTarget);
+  };
+
+  const handleBackdropMouseUp = (e) => {
+    if (backdropMouseDownRef.current && e.target === e.currentTarget) {
+      onClose();
+    }
+    backdropMouseDownRef.current = false;
+  };
 
   // Close modal on Escape key press
   useEffect(() => {
@@ -191,7 +205,8 @@ export function CheckoutModal({ isOpen, onClose, onPaymentSuccess }) {
 
   return (
     <div
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onMouseDown={handleBackdropMouseDown}
+      onMouseUp={handleBackdropMouseUp}
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-900/50 backdrop-blur-sm overflow-y-auto animate-fadeIn"
     >
       <div className="relative w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl border border-gray-200 shadow-2xl p-5 sm:p-8 max-h-[92vh] overflow-y-auto text-gray-900 animate-fade-in-up">
