@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
-import { Award, Star, Users, Quote } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Award, Star, Users, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { APP_CONFIG } from '../config';
 
 export function CoachSection({ onOpenCheckout }) {
   const [imgError, setImgError] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
 
   const testimonials = [
     {
@@ -32,8 +36,105 @@ export function CoachSection({ onOpenCheckout }) {
       quote: "Most LinkedIn courses give you 50 hours of generic videos you never watch. Coach Ravikant's playbook is tactical, concise, and immediately actionable. I restructured my headline and About section in 30 minutes. Inbound profile views turned into 3 discovery calls in the first week.",
       result: "3 Inbound Calls",
       tag: "Agency Founder"
+    },
+    {
+      name: "Neha Khurana",
+      role: "VP of Strategic Partnerships",
+      company: "FinScale Technologies (Delhi NCR)",
+      headline: "Booked 14 CXO Conversations in 3 Weeks Without Cold Calling",
+      quote: "Our team had struggled to break through enterprise procurement gates for quarters. Coach Ravikant’s relationship-first playbook and account-mapping templates opened direct dialogues with 14 CFOs and CTOs. The clarity of the positioning exercises alone was game-changing.",
+      result: "14 CXO Meetings",
+      tag: "Enterprise Tech"
+    },
+    {
+      name: "Rohan Kulkarni",
+      role: "Principal Strategy Consultant",
+      company: "Apex Strategy Group (Pune)",
+      headline: "Landed a ₹85,000/Month Retainer on Day 16",
+      quote: "I used to hesitate posting or reaching out because I didn't want to look like another spammy lead gen guy. This framework gave me the exact non-salesy engagement formula. A prospect I nurtured using the 30-minute daily rhythm signed an ₹85k monthly retainer within 16 days.",
+      result: "₹85k/mo Retainer",
+      tag: "Advisory Consultant"
+    },
+    {
+      name: "Ananya Sen",
+      role: "Executive Coach & Keynote Speaker",
+      company: "Zenith Leadership (Hyderabad)",
+      headline: "Overwhelmed by Noise Until I Followed This 30-Min Daily Rhythm",
+      quote: "I was spending 2 hours a day randomly commenting and scrolling with zero business results. Following the 30-minute daily checklist completely streamlined my routine. My post engagement jumped 4x and I closed 7 high-value executive coaching packages in under 45 days.",
+      result: "7 High-Ticket Deals",
+      tag: "Executive Coach"
+    },
+    {
+      name: "Deepak Mehra",
+      role: "Head of Business Development",
+      company: "LogiTech Global (Chennai)",
+      headline: "Built a 40-Account Tier-1 Pipeline in Sales Navigator",
+      quote: "Getting the sponsored Sales Navigator seat alongside the exact search filters and boolean templates was incredible. We stopped wasting InMails on wrong personas. In month one, our SDR pipeline generated 40 qualified enterprise opportunities.",
+      result: "40 Tier-1 Leads",
+      tag: "B2B Sales Leader"
     }
   ];
+
+  // Dynamically adapt visible cards to screen size
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (typeof window === 'undefined') return;
+      if (window.innerWidth < 768) {
+        setVisibleCards(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(3);
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+    return () => window.removeEventListener('resize', updateVisibleCards);
+  }, []);
+
+  const maxIndex = Math.max(0, testimonials.length - visibleCards);
+
+  // Keep index within bounds on screen resize
+  useEffect(() => {
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [maxIndex, currentIndex]);
+
+  // Smooth auto-slide every 4.5 seconds (paused on hover or touch)
+  useEffect(() => {
+    if (isPaused || maxIndex === 0) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isPaused, maxIndex]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e) => {
+    setIsPaused(true);
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    setIsPaused(false);
+    if (touchStartX === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    if (deltaX > 45) {
+      handlePrev();
+    } else if (deltaX < -45) {
+      handleNext();
+    }
+    setTouchStartX(null);
+  };
 
   return (
     <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
@@ -128,101 +229,131 @@ export function CoachSection({ onOpenCheckout }) {
         </div>
       </div>
 
-      {/* Social Proof Grid */}
+      {/* Social Proof Animated Carousel */}
       <div>
-        <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
           <div>
-            <h3 className="text-lg sm:text-2xl font-bold text-gray-900">
-              What B2B Practitioners Say
-            </h3>
-            <p className="text-xs text-gray-500">
+            <div className="flex items-center gap-2">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-900">
+                What B2B Practitioners Say
+              </h3>
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-[#0A66C2] font-semibold border border-blue-100">
+                {testimonials.length} Reviews
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
               Real results from consultants, founders, and SDRs who implemented the daily routine.
             </p>
           </div>
-          <div className="hidden sm:flex items-center gap-1 text-amber-400">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-current" />
-            ))}
+
+          <div className="flex items-center justify-between sm:justify-end gap-3">
+            <div className="flex items-center gap-1.5 text-amber-400 bg-amber-50/60 px-2.5 py-1 rounded-full border border-amber-100">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                ))}
+              </div>
+              <span className="text-[11px] font-bold text-gray-800 font-mono">5.0 / 5.0</span>
+            </div>
+
+            {/* Slider Navigation Buttons */}
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={handlePrev}
+                aria-label="Previous testimonial"
+                className="w-8 h-8 rounded-full bg-white border border-gray-200 hover:border-[#0A66C2] hover:text-[#0A66C2] text-gray-600 flex items-center justify-center shadow-xs transition-colors duration-200 active:scale-95"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleNext}
+                aria-label="Next testimonial"
+                className="w-8 h-8 rounded-full bg-white border border-gray-200 hover:border-[#0A66C2] hover:text-[#0A66C2] text-gray-600 flex items-center justify-center shadow-xs transition-colors duration-200 active:scale-95"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* 1. DEDICATED MOBILE VIEW (block md:hidden): Touch-Scroll Snap Carousel */}
-        <div className="block md:hidden">
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-3 pb-4 -mx-4 px-4 no-scrollbar">
+        {/* Animated Carousel Track */}
+        <div
+          className="relative overflow-hidden -mx-2 px-2"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            className="flex transition-transform duration-500 ease-out py-2 items-stretch"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
+            }}
+          >
             {testimonials.map((test, idx) => (
               <div
                 key={idx}
-                className="snap-center w-[85vw] max-w-[320px] flex-shrink-0 card-elevated rounded-2xl p-4 flex flex-col justify-between"
+                style={{ width: `${100 / visibleCards}%` }}
+                className="flex-shrink-0 px-2 sm:px-3 flex"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-gray-100">
-                    <span className="text-[9px] font-mono uppercase tracking-wider font-bold text-[#0A66C2] bg-blue-50 px-2 py-0.5 rounded">
-                      {test.tag}
-                    </span>
-                    <span className="text-[11px] font-bold text-green-600 font-mono">
-                      {test.result}
-                    </span>
-                  </div>
-
-                  <h4 className="text-xs font-bold text-gray-900 mb-1.5 leading-snug">
-                    "{test.headline}"
-                  </h4>
-
-                  <p className="text-[11px] text-gray-500 leading-relaxed italic mb-3">
-                    "{test.quote}"
-                  </p>
-                </div>
-
-                <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
+                <div className="card-elevated rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-blue-200 transition-all duration-300 w-full border border-gray-100 bg-white shadow-xs hover:shadow-md">
                   <div>
-                    <h5 className="text-xs font-bold text-gray-900">{test.name}</h5>
-                    <p className="text-[10px] text-gray-500">{test.role}</p>
-                    <p className="text-[9px] text-gray-400">{test.company}</p>
+                    <div className="flex items-center justify-between mb-3 pb-2 border-b border-gray-100">
+                      <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#0A66C2] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100/60">
+                        {test.tag}
+                      </span>
+                      <span className="text-xs font-bold text-green-600 font-mono flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        {test.result}
+                      </span>
+                    </div>
+
+                    <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-2 leading-snug">
+                      "{test.headline}"
+                    </h4>
+
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed italic mb-4">
+                      "{test.quote}"
+                    </p>
                   </div>
-                  <Quote className="w-3.5 h-3.5 text-gray-300" />
+
+                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between mt-auto">
+                    <div>
+                      <h5 className="text-xs sm:text-sm font-bold text-gray-900">{test.name}</h5>
+                      <p className="text-[11px] text-gray-500">{test.role}</p>
+                      <p className="text-[10px] text-gray-400 font-medium">{test.company}</p>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-blue-50/60 flex items-center justify-center flex-shrink-0 border border-blue-100/60">
+                      <Quote className="w-4 h-4 text-[#0A66C2]" />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-[10px] text-center text-gray-400 mt-1">← Swipe to see more reviews →</p>
         </div>
 
-        {/* 2. PROTECTED DESKTOP VIEW (hidden md:grid): Preserved Exact 3-Column Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6">
-          {testimonials.map((test, idx) => (
-            <div
-              key={idx}
-              className="card-elevated rounded-2xl p-6 flex flex-col justify-between hover:border-blue-200 transition-colors"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[#0A66C2] bg-blue-50 px-2 py-0.5 rounded">
-                    {test.tag}
-                  </span>
-                  <span className="text-xs font-bold text-green-600 font-mono">
-                    {test.result}
-                  </span>
-                </div>
-
-                <h4 className="text-sm font-bold text-gray-900 mb-2 leading-snug">
-                  "{test.headline}"
-                </h4>
-
-                <p className="text-xs text-gray-500 leading-relaxed italic mb-4">
-                  "{test.quote}"
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
-                <div>
-                  <h5 className="text-xs font-bold text-gray-900">{test.name}</h5>
-                  <p className="text-[10px] text-gray-500">{test.role}</p>
-                  <p className="text-[9px] text-gray-400">{test.company}</p>
-                </div>
-                <Quote className="w-4 h-4 text-gray-300" />
-              </div>
-            </div>
-          ))}
+        {/* Carousel Indicators / Controls */}
+        <div className="flex flex-col items-center justify-center gap-2 mt-5">
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: maxIndex + 1 }).map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                onClick={() => setCurrentIndex(dotIdx)}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+                className={`transition-all duration-300 rounded-full ${
+                  currentIndex === dotIdx
+                    ? 'w-7 h-2 bg-[#0A66C2]'
+                    : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
+            ))}
+          </div>
+          <p className="text-[11px] text-gray-400 flex items-center gap-2">
+            <span>← Swipe or use arrows to view all {testimonials.length} reviews →</span>
+            <span className="hidden sm:inline text-gray-300">•</span>
+            <span className="hidden sm:inline text-gray-400">Autoplay pauses on hover</span>
+          </p>
         </div>
       </div>
     </section>
