@@ -28,7 +28,7 @@ export function FAQSection() {
     },
     {
       q: "Can I reach out for support if I get stuck?",
-      a: "Yes! You have direct access to our official support channels: Foxxy Digital Tools support on WhatsApp (+91 9918991805) and Coach Ravikant's team on WhatsApp (+91 8595109750). We are here to ensure your seat activation and toolkit onboarding run smoothly."
+      a: "Yes! You have direct access to our official Foxxy Digital Tools support team on WhatsApp (+91 9918991805). We are here to ensure your seat activation and toolkit onboarding run smoothly."
     }
   ];
 

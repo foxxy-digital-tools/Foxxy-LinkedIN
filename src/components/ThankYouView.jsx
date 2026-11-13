@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { FoxxyLogo, CRAcademyBadge } from './FoxxyLogoSVG';
-import { Download, MessageCircle, CheckCircle, ShieldCheck, ArrowRight, Sparkles, RefreshCw, Lock, Zap, Clock, Check, Phone } from 'lucide-react';
+import { Download, MessageCircle, CheckCircle, ShieldCheck, ArrowRight, Sparkles, RefreshCw, Lock, Zap, Clock, Check } from 'lucide-react';
 import { APP_CONFIG } from '../config';
 
 export function ThankYouView({ orderData, onResetOrder }) {
@@ -314,35 +314,21 @@ export function ThankYouView({ orderData, onResetOrder }) {
 
               <div className="space-y-2">
                 <a
-                  href={`https://wa.me/${APP_CONFIG.WHATSAPP_SUPPORT_NUMBER}`}
+                  href={`https://wa.me/${APP_CONFIG.WHATSAPP_SUPPORT_NUMBER}?text=Hi%20Foxxy%20Team!%20My%20payment%20is%20verified%20(Ref:%20${paymentId}).%20Please%20expedite%20my%20Sales%20Nav%20seat%20invitation.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl bg-white border border-gray-200 flex items-center justify-between hover:border-green-400 transition-colors"
+                  className="p-3.5 rounded-xl bg-white border border-gray-200 flex items-center justify-between hover:border-green-400 hover:shadow-xs transition-all"
                 >
-                  <div className="flex items-center gap-2">
-                    <MessageCircle className="w-4 h-4 text-green-600" />
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center text-green-600 flex-shrink-0">
+                      <MessageCircle className="w-4 h-4" />
+                    </div>
                     <div>
-                      <span className="font-bold text-gray-900 block">Foxxy Activation Team</span>
-                      <span className="text-gray-400 text-[11px] font-mono">+91 9918991805</span>
+                      <span className="font-bold text-gray-900 text-xs block">Foxxy Activation Desk</span>
+                      <span className="text-gray-500 text-[11px] font-mono">{APP_CONFIG.WHATSAPP_SUPPORT_FORMATTED}</span>
                     </div>
                   </div>
-                  <span className="text-green-600 font-bold text-xs">Chat →</span>
-                </a>
-
-                <a
-                  href={`https://wa.me/${APP_CONFIG.COACH_RAVIKANT_SUPPORT_NUMBER}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-xl bg-white border border-gray-200 flex items-center justify-between hover:border-blue-400 transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#0A66C2]" />
-                    <div>
-                      <span className="font-bold text-gray-900 block">Coach Ravikant Academy Desk</span>
-                      <span className="text-gray-400 text-[11px] font-mono">+91 8595109750</span>
-                    </div>
-                  </div>
-                  <span className="text-[#0A66C2] font-bold text-xs">Chat →</span>
+                  <span className="text-green-600 font-bold text-xs bg-green-50 px-2 py-1 rounded-md">Chat →</span>
                 </a>
               </div>
             </div>
