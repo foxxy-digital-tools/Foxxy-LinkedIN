@@ -48,9 +48,8 @@ export const APP_CONFIG = {
   PLAYBOOK_1_PDF_URL: "/CLIC_LinkedIn_Foundation_Playbook_Digital_Release_2026.pdf",
   PLAYBOOK_2_PDF_URL: "/CLIC_Sales_Navigator_Accelerator_7_Day_Quick_Start.pdf",
 
-  // 4. WhatsApp Support Numbers (From PDF)
+  // 4. WhatsApp Support Number (From PDF)
   WHATSAPP_SUPPORT_NUMBER: "919918991805",      // Sales & Seat Activation Support
-  CONSULTATION_WHATSAPP_NUMBER: "918595109750",  // Coach Ravikant Consultation Support
 
   // 5. Cohort Urgency Settings
   TOTAL_SEATS: 100,

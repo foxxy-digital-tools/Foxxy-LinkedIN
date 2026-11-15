@@ -23,11 +23,9 @@ export const APP_CONFIG = {
   COACH_RAVIKANT_COVER_URL: "/coach_ravikant_cover.jpg",
   COACH_RAVIKANT_HEADSHOT_URL: "/coach_ravikant_headshot.jpg",
 
-  // Official Support WhatsApp Numbers
+  // Official Support WhatsApp Number
   WHATSAPP_SUPPORT_NUMBER: "919918991805",
   WHATSAPP_SUPPORT_FORMATTED: "+91 9918991805",
-  CONSULTATION_WHATSAPP_NUMBER: "918595109750",
-  CONSULTATION_WHATSAPP_FORMATTED: "+91 8595109750",
 
   // Cohort Urgency Settings
   TOTAL_SEATS: 100,

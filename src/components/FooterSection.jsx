@@ -29,12 +29,12 @@ export function FooterSection() {
           {/* Support Channels */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-gray-900">
-              Official WhatsApp Support Desks
+              Official WhatsApp Support Desk
             </h4>
 
             <div className="p-3.5 rounded-xl bg-white border border-gray-200 space-y-1.5">
               <span className="text-xs font-bold text-gray-900 block">
-                01 Foxxy Digital Tools — Product & Seat Support
+                Foxxy Digital Tools — Product & Seat Support
               </span>
               <p className="text-xs text-gray-500">
                 Questions about software options, prices, offers and seat access.
@@ -47,24 +47,6 @@ export function FooterSection() {
               >
                 <MessageCircle className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>WhatsApp: {APP_CONFIG.WHATSAPP_SUPPORT_FORMATTED}</span>
-              </a>
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-white border border-gray-200 space-y-1.5">
-              <span className="text-xs font-bold text-gray-900 block">
-                02 Coach Ravikant — Consultation Enquiries
-              </span>
-              <p className="text-xs text-gray-500">
-                Discuss goals, tailored implementation support, and advisory fit.
-              </p>
-              <a
-                href={`https://wa.me/${APP_CONFIG.CONSULTATION_WHATSAPP_NUMBER}?text=Hi%20Coach%20Ravikant%20Team!%20I%20would%20like%20to%20request%20a%20suitability%20discussion%20for%20implementation.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#0A66C2] hover:text-[#084e96] font-semibold min-h-[44px] py-1"
-              >
-                <MessageCircle className="w-3.5 h-3.5 flex-shrink-0" />
-                <span>WhatsApp: {APP_CONFIG.CONSULTATION_WHATSAPP_FORMATTED}</span>
               </a>
             </div>
           </div>
