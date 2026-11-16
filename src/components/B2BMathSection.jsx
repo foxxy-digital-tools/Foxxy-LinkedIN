@@ -109,7 +109,7 @@ export function B2BMathSection({ onOpenCheckout }) {
   ];
 
   return (
-    <section id="the-math" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="the-math" className="py-12 md:py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-xs font-mono font-semibold mb-3">
@@ -152,11 +152,10 @@ export function B2BMathSection({ onOpenCheckout }) {
                 <button
                   key={deal.value}
                   onClick={() => setSelectedDealSize(deal.value)}
-                  className={`min-h-[44px] flex items-center justify-center px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center cursor-pointer ${
-                    selectedDealSize === deal.value
+                  className={`min-h-[44px] flex items-center justify-center px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center cursor-pointer ${selectedDealSize === deal.value
                       ? 'bg-[#0A66C2] text-white shadow-md ring-2 ring-[#0A66C2]/25'
                       : 'bg-white border border-gray-300 text-gray-700 hover:bg-blue-50/60 hover:border-blue-300'
-                  }`}
+                    }`}
                 >
                   {deal.label}
                 </button>
@@ -475,9 +474,8 @@ export function B2BMathSection({ onOpenCheckout }) {
                 return (
                   <tr
                     key={idx}
-                    className={`hover:bg-gray-50/80 transition-colors ${
-                      row.isTotalRow ? 'bg-gray-100/70 font-bold border-t-2 border-gray-300' : ''
-                    }`}
+                    className={`hover:bg-gray-50/80 transition-colors ${row.isTotalRow ? 'bg-gray-100/70 font-bold border-t-2 border-gray-300' : ''
+                      }`}
                   >
                     <td className="py-4 px-4 sm:px-6">
                       <div className="font-semibold text-gray-900">{row.feature}</div>

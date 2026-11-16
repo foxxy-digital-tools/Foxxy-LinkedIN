@@ -68,7 +68,7 @@ export function App() {
 
       <main className="flex-1 relative z-10">
         {/* 2. Elevated Executive Hero Section (Direct-Response Mobile + Desktop Grid) */}
-        <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dot-pattern">
+        <section className="relative py-12 sm:py-16 md:py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-dot-pattern">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
             {/* Left Column (Desktop) / Top Flow (Mobile) */}
             <div className="lg:col-span-6 space-y-4 sm:space-y-6">
