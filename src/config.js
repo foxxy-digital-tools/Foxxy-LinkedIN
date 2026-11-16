@@ -19,7 +19,7 @@ export const APP_CONFIG = {
 
   // Image Asset URLs (Stored in /public)
   FOXXY_LOGO_URL: "/Foxxy_Video_AI.png",
-  CR_ACADEMY_LOGO_URL: "/cr_academy_logo.jpg",
+  CR_ACADEMY_LOGO_URL: "/cr_academy_logo.png",
   COACH_RAVIKANT_COVER_URL: "/coach_ravikant_cover.jpg",
   COACH_RAVIKANT_HEADSHOT_URL: "/coach_ravikant_headshot.jpg",
 
