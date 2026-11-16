@@ -202,21 +202,24 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
           <div className="lg:col-span-7 space-y-5 sm:space-y-6">
             {/* DEDICATED MOBILE ORDER SUMMARY (lg:hidden): Shows upfront before inputs */}
             <div className="lg:hidden rounded-2xl bg-blue-50/70 border border-blue-200 p-4 space-y-3">
-              <div className="flex items-center justify-between">
-                <div>
+              <div className="flex items-center justify-between gap-3">
+                <div className="min-w-0">
                   <span className="text-[10px] font-mono font-bold text-[#0A66C2] uppercase tracking-wider block">
                     PACKAGE SUMMARY
                   </span>
-                  <span className="text-sm font-black text-gray-900 block">
+                  <span className="text-sm font-black text-gray-900 block leading-tight">
                     LinkedIn Growth Toolkit + Free Seat
                   </span>
                 </div>
-                <div className="text-right">
-                  <span className="text-base font-black text-[#0A66C2] font-mono block">
-                    {APP_CONFIG.PRICE_FORMATTED}
-                  </span>
-                  <span className="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
-                    Save ₹18,999
+                <div className="text-right flex-shrink-0">
+                  <div className="flex items-baseline justify-end gap-1.5">
+                    <span className="text-xs text-gray-400 line-through font-mono">₹15,000</span>
+                    <span className="text-base sm:text-lg font-black text-[#0A66C2] font-mono">
+                      {APP_CONFIG.PRICE_FORMATTED}
+                    </span>
+                  </div>
+                  <span className="inline-block whitespace-nowrap text-[10px] text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
+                    Save 73%
                   </span>
                 </div>
               </div>

@@ -117,21 +117,16 @@ export function App() {
                   </div>
                 </div>
 
-                {/* Scarcity & Micro-Trust Row */}
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-gray-500 pt-0.5">
-                  <span className="inline-flex items-center gap-1 font-semibold text-gray-700">
+                {/* Micro-Trust Row - Clean single-line on mobile */}
+                <div className="flex items-center justify-center sm:justify-start gap-2.5 sm:gap-3 text-xs text-gray-600 pt-0.5">
+                  <span className="inline-flex items-center gap-1 font-semibold text-gray-700 whitespace-nowrap">
                     <Lock className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                     <span>Zero Password Required</span>
                   </span>
                   <span className="text-gray-300">•</span>
-                  <span className="inline-flex items-center gap-1 font-semibold text-gray-700">
+                  <span className="inline-flex items-center gap-1 font-semibold text-gray-700 whitespace-nowrap">
                     <Zap className="w-3.5 h-3.5 text-[#0A66C2] flex-shrink-0" />
                     <span>Instant Digital Access</span>
-                  </span>
-                  <span className="text-gray-300">•</span>
-                  <span className="inline-flex items-center gap-1 font-mono font-bold text-[#0A66C2] bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Only {remainingSeats} Seats Left
                   </span>
                 </div>
               </div>
