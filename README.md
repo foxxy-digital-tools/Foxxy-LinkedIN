@@ -41,6 +41,7 @@ export const APP_CONFIG = {
   CURRENCY: "INR",
 
   // 2. Dual-Mode Hero Video Toggle
+  SHOW_HERO_VIDEO: false, // Set to true when video is ready to re-enable 75s Video Overview
   HERO_MODE_DEFAULT: "INTERACTIVE_GRAPHIC", // or "VIDEO"
   HERO_VIDEO_URL: "", // Paste your MP4 / YouTube / Vimeo embed URL here
 

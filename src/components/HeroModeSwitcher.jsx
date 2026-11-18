@@ -3,7 +3,10 @@ import { Play, Sparkles, ShieldCheck, ChevronRight, FileText, X, CheckCircle, Ar
 import { APP_CONFIG, VSL_TRANSCRIPT } from '../config';
 
 export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
-  const [heroMode, setHeroMode] = useState(APP_CONFIG.HERO_MODE_DEFAULT);
+  const isVideoEnabled = Boolean(APP_CONFIG.SHOW_HERO_VIDEO);
+  const [heroMode, setHeroMode] = useState(
+    isVideoEnabled ? APP_CONFIG.HERO_MODE_DEFAULT : 'INTERACTIVE_GRAPHIC'
+  );
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
   const [activeChapter, setActiveChapter] = useState(0);
@@ -18,8 +21,8 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
 
   return (
     <div className="relative w-full">
-      {/* Mode Switcher Pill (Hidden on mobile compact to keep focus razor sharp) */}
-      {!isMobileCompact && (
+      {/* Mode Switcher Pill (Shown only when video is enabled and not on mobile compact) */}
+      {!isMobileCompact && isVideoEnabled && (
         <div className="flex items-center justify-end mb-3">
           <div className="inline-flex items-center p-1 rounded-xl bg-gray-100 border border-gray-200 text-xs font-semibold shadow-inner">
             <button
@@ -50,7 +53,7 @@ export function HeroModeSwitcher({ onOpenCheckout, isMobileCompact = false }) {
       )}
 
       {/* MODE A: Sleek Interactive Visual Artifact (Titanium VIP Pass + 3D Digital Dossiers) */}
-      {heroMode === 'INTERACTIVE_GRAPHIC' || isMobileCompact ? (
+      {!isVideoEnabled || heroMode === 'INTERACTIVE_GRAPHIC' || isMobileCompact ? (
         <div className={`card-elevated rounded-2xl sm:rounded-3xl border border-blue-100/80 bg-gradient-to-b from-slate-50/50 via-white to-blue-50/30 shadow-lg relative overflow-hidden ${
           isMobileCompact ? 'p-3.5 space-y-3' : 'p-5 sm:p-6 space-y-4'
         }`}>
