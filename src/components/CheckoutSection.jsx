@@ -74,6 +74,17 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
       console.warn("Backend lead pre-capture warning:", apiErr);
     }
 
+    // Track Meta Pixel Lead event with deduplication eventID
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Lead', {
+        content_name: 'CLIC_Toolkit_Plus_1Mo_SalesNav_Adv',
+        currency: 'INR',
+        value: 3999.00
+      }, {
+        eventID: serverLeadId ? `lead_${serverLeadId}` : undefined
+      });
+    }
+
     const isPlaceholderKey = !APP_CONFIG.RAZORPAY_KEY_ID ||
       APP_CONFIG.RAZORPAY_KEY_ID.includes('YOUR_KEY_HERE') ||
       APP_CONFIG.RAZORPAY_KEY_ID.startsWith('rzp_test_placeholder');
@@ -112,6 +123,18 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
                 order_id: response.razorpay_order_id || serverOrderId,
                 signature: response.razorpay_signature,
                 status: 'completed'
+              });
+            }
+
+            // Track Meta Pixel Purchase event with deduplication eventID
+            if (typeof window !== 'undefined' && window.fbq) {
+              window.fbq('track', 'Purchase', {
+                content_name: 'CLIC_Toolkit_Plus_1Mo_SalesNav_Adv',
+                currency: 'INR',
+                value: 3999.00,
+                order_id: response.razorpay_order_id || serverOrderId
+              }, {
+                eventID: activeLeadId ? `purchase_${activeLeadId}` : undefined
               });
             }
 
