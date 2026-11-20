@@ -20,6 +20,32 @@ export function ThankYouView({ orderData, onResetOrder }) {
     fire(0.1, { spread: 120, startVelocity: 45 });
   }, []);
 
+  // Deduplicated Meta Pixel Purchase tracking (fires once per transaction ref if arriving via direct redirect)
+  useEffect(() => {
+    const paymentRef = orderData?.paymentId || orderData?.orderId;
+    if (!paymentRef) return;
+
+    const dedupeKey = `meta_purchase_fired_${paymentRef}`;
+    if (typeof window !== 'undefined' && window.fbq) {
+      try {
+        if (!sessionStorage.getItem(dedupeKey)) {
+          sessionStorage.setItem(dedupeKey, 'true');
+          const eventId = orderData?.lead_id ? `purchase_${orderData.lead_id}` : `purchase_${paymentRef}`;
+          window.fbq('track', 'Purchase', {
+            content_name: 'CLIC_Toolkit_Plus_1Mo_SalesNav_Adv',
+            currency: 'INR',
+            value: 3999.00,
+            order_id: orderData?.orderId || paymentRef,
+          }, {
+            eventID: eventId
+          });
+        }
+      } catch (_) {
+        // Fallback if sessionStorage is unavailable
+      }
+    }
+  }, [orderData]);
+
   const paymentId = orderData?.paymentId || `pay_${Date.now()}`;
   const customerName = orderData?.customer?.fullName || "Valued Executive";
   const customerEmail = orderData?.customer?.email || "your-linkedin-email@domain.com";

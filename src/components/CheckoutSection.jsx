@@ -138,10 +138,16 @@ export function CheckoutSection({ onPaymentSuccess, isModal = false, onCloseModa
               });
             }
 
+            const paymentRef = response.razorpay_payment_id || response.razorpay_order_id || serverOrderId;
+            if (paymentRef) {
+              try { sessionStorage.setItem(`meta_purchase_fired_${paymentRef}`, 'true'); } catch (_) {}
+            }
+
             onPaymentSuccess({
               paymentId: response.razorpay_payment_id || `pay_${Date.now()}`,
               orderId: response.razorpay_order_id || serverOrderId || `order_${Date.now()}`,
               signature: response.razorpay_signature || '',
+              lead_id: activeLeadId,
               customer: { ...formData },
               amount: APP_CONFIG.PRICE_FORMATTED,
               timestamp: new Date().toISOString()

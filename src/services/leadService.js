@@ -1,10 +1,13 @@
 import { APP_CONFIG } from '../config';
+import { getMetaTrackingParams } from '../utils/metaTracking';
 
 /**
  * Capture lead in backend database before/during payment initiation.
  */
 export async function createLead(formData) {
   try {
+    const trackingParams = getMetaTrackingParams();
+
     const response = await fetch(`${APP_CONFIG.API_BASE_URL}/leads`, {
       method: 'POST',
       headers: {
@@ -19,6 +22,8 @@ export async function createLead(formData) {
         offer: 'CLIC_Toolkit_Plus_1Mo_SalesNav_Adv',
         amount: 3999.00,
         source: 'foxxy_linkedin_landing',
+        fbp: trackingParams.fbp || null,
+        fbc: trackingParams.fbc || null,
       }),
     });
 
@@ -43,6 +48,8 @@ export async function updateLeadPayment(leadId, paymentData) {
   if (!leadId) return { success: false };
 
   try {
+    const trackingParams = getMetaTrackingParams();
+
     const response = await fetch(`${APP_CONFIG.API_BASE_URL}/leads/${leadId}/payment`, {
       method: 'POST',
       headers: {
@@ -54,6 +61,8 @@ export async function updateLeadPayment(leadId, paymentData) {
         order_id: paymentData.order_id,
         signature: paymentData.signature,
         status: paymentData.status || 'completed',
+        fbp: trackingParams.fbp || null,
+        fbc: trackingParams.fbc || null,
       }),
     });
 
